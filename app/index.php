@@ -301,6 +301,11 @@
 			</p>
 			
 			<style>
+				:root {
+					--input-border-color:#dddddd;
+					--box-shadow-central:0 0 0 1px var(--input-border-color), 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+				}
+
 				body,
 				input,
 				textarea {
@@ -450,6 +455,9 @@
 				.center-idea-container table {
 					transition:transform 1s;
 					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+					box-shadow:var(--box-shadow-central);
+					border:none;
+					border-radius:12px;
 				}
 				.button {
 					border:1px solid #000;
