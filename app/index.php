@@ -105,7 +105,7 @@
 			<link rel="icon" href="/assets/bulb.png" type="image/x-icon"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
 			<title>
-				IdeasAI: A GPT-3-powered business idea generator
+				IdeasAI: GPT-3-powered business idea generator
 			</title>
 			<script src="/assets/jquery.min.js?2"></script>
 
@@ -369,7 +369,6 @@
 					margin:14px auto;
 				}
 				table tr td {
-					border-bottom:1px solid #e8e8e8;
 					font-weight:bold;
 					padding:21px;
 				}
@@ -539,7 +538,7 @@
 				<div class="banner-subscribe" style="position:fixed;left:0;width:100vw;bottom:0;text-align:center;line-height:1.8;background:#fff;padding:14px;box-shadow:0 -1px -2px 0 rgba(0,0,0,.1);margin:0 auto;z-index:100;border-top:1px solid #eee;">
 					<strong style="width:calc(100% - 28px);display:block;">
 						Join <?=number_format($emailCount)?> people who get the best new ideas by GPT-3 in their email weekly
-						<input tabindex="1" type="email" class="email" placeholder="Your email">
+						<input tabindex="1" type="email" class="email" placeholder="Type your email...">
 						<div tabindex="2" class="button action-subscribe">
 							Subscribe
 						</div>
