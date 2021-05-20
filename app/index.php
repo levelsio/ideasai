@@ -493,6 +493,8 @@
 					padding:11px;
 					border-radius:5px;
 					display:inline-block
+					box-shadow:var(--box-shadow-central);
+					border:none;
 				}
 				.td_votes {
 					width:140px;
