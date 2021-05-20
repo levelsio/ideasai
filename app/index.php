@@ -289,10 +289,14 @@
 
 						$query=$gpt3ideasDb->prepare("SELECT COUNT(*) FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND human_seeded IS NOT 1");
 						$query->execute();
-						$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)'];
+						$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/30.5;
 
-
-					echo number_format($ideasInLastH/30.5);
+						if($ideasInLastH<10) {
+							$query=$gpt3ideasDb->prepare("SELECT COUNT(*) FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND human_seeded IS NOT 1");
+							$query->execute();
+							$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/24;
+						}
+					echo number_format($ideasInLastH);
 				?> ideas generated today.<br/>
 				<?=number_format(count($ideas))?> ideas generated so far.<br/>
 			</p>
