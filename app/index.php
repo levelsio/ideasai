@@ -164,7 +164,7 @@
 						if($(this).data('solo')) {
 							soloIdea=true;
 							document.body.style.cursor='wait';
-							$('tr#id_'+$(this).data('id')).fadeTo(0,0.00001);
+							$('tr#id_'+$(this).data('id')).fadeTo(100,0.00001);
 						}
 						activeAjax=$.ajax({
 							async:true,
@@ -204,7 +204,7 @@
 						if($(this).data('solo')) {
 							soloIdea=true;
 							document.body.style.cursor='wait';
-							$('tr#id_'+$(this).data('id')).fadeTo(0,0.00001);
+							$('tr#id_'+$(this).data('id')).fadeTo(100,0.00001);
 						}
 						activeAjax=$.ajax({
 							async:true,
