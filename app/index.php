@@ -356,7 +356,7 @@
 					text-align:center;
 				}
 				table {
-					box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
+					box-shadow:var(--box-shadow-central);
 					background:#fff;
 					border-radius:5px;
 					border-collapse:collapse;
@@ -503,7 +503,6 @@
 				}
 				@media (max-width:1000px) {
 					table {
-						box-shadow:var(--box-shadow-central);
 						display:block;
 					}
 					.td_idea,
