@@ -107,7 +107,19 @@
 			<title>
 				IdeasAI: GPT-3-powered business idea generator
 			</title>
-			<script src="/assets/jquery.min.js?2"></script>
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@levelsio">
+			<meta name="twitter:creator" content="@levelsio">
+			<meta name="twitter:title" content="IdeasAI: GPT-3-powered business idea generator">
+			<meta name="twitter:description" content="IdeasAI is an A.I. that generates business idea using GPT-3 by OpenAI" />
+			<meta name="twitter:image:src" content="https://ideasai.net/social.png?<?=filemtime(__DIR__.'/../assets/social.png')?>">
+			<meta property="og:type" content="website"/>
+			<meta property="og:title" content="IdeasAI: GPT-3-powered business idea generator"/>
+			<meta property="og:image" content="https://ideasai.net/ocial.png?<?=filemtime(__DIR__.'/../assets/social.png')?>">
+			<meta property="og:description" content="IdeasAI is an A.I. that generates business idea using GPT-3 by OpenAI" />
+			<meta property="og:url" content="https://ideasai.net<?=$_SERVER['REQUEST_URI']?>">
+			<meta name="twitter:url" content="https://ideasai.net<?=$_SERVER['REQUEST_URI']?>">
+			<script src="/assets/jquery.min.js??<?=filemtime(__DIR__.'/../assets/jquery.min.js')?>"></script>
 
 			<script>
 				var soloIdea=false;
@@ -115,7 +127,6 @@
 				$(function() {
 					
 					document.body.style.cursor='default';
-
 
 					$(window).resize(function() {
 						windowWidth=$(window).width();
