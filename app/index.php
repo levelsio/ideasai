@@ -521,8 +521,6 @@
 						display:block;
 						text-align:center;
 						width:auto;
-						width: 100vw;
-						max-width: 700px;
 					}
 					.td_idea {
 						border:none;
