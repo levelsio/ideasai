@@ -631,8 +631,6 @@
 					}
 				/*}*/
 				.center-idea-container table {
-					transition:transform 0.5s;
-					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
 					border:none;
 					border-radius:12px;
 					z-index: 2;
