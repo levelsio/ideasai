@@ -124,6 +124,22 @@
 			<script>
 				var soloIdea=false;
 				windowWidth=$(window).width();
+
+				/* <dragging vars> */
+					var draggingNow=false;
+					var draggingX=0;
+					var draggingY=0;
+					var dragCardInitialMouseX=0;
+					var dragCardInitialMouseY=0;
+					var dragCardInitialX=0;
+					var dragCardInitialY=0;
+					var dragCardWidth=0;
+					var dragCardHeight=0;
+					var dragRelativeX=0;
+					var dragRelativeY=0;
+					var draggingCard;
+				/* </dragging vars> */
+
 				$(function() {
 					
 					document.body.style.cursor='default';
