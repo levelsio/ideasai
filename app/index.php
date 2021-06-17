@@ -157,7 +157,6 @@
 
 					/* <dragging logic> */
 						$('body').on('mousedown touchstart','.center-idea-container table',function(e) {
-							if(!currentCardUserId) return;
 							if(typeof e.originalEvent.touches !=='undefined') {
 								/* touch device */
 								draggingX=e.originalEvent.touches[0].clientX;
@@ -218,7 +217,6 @@
 							$(draggingCard).css('transform','translate3d('+dragRelativeX+'px,'+dragRelativeY+'px,0px) rotate('+rotateDeg+'deg)');
 						});
 						$('body').on('mouseup touchend',function(e) {
-							if(!currentCardUserId) return;
 							if(!draggingNow) return;
 							draggingNow=false;
 
