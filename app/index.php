@@ -612,12 +612,14 @@
 					-moz-user-select: none;
 					-ms-user-select: none;
 					user-select: none;
+					cursor: grab;
 				}
 				.center-idea-container table:hover {
 					opacity: 0.75;
 				}
 				.center-idea-container table:active,
 				.center-idea-container table.active {
+					cursor: grabbing;
 					opacity: 0.55;
 				}
 				@media (max-height:1000px) {
