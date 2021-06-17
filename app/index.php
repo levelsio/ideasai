@@ -635,6 +635,7 @@
 					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
 					border:none;
 					border-radius:12px;
+					z-index: 2;
 				}
 				.button {
 					border:1px solid #000;
