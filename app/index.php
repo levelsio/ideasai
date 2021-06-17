@@ -548,9 +548,9 @@
 				}
 				.action-downvote.active svg,
 				.action-upvote.active svg {
-					transform: scale(2);
-					-webkit-transform: scale(2);
-					-ms-transform: scale(2);
+					transform: scale(1.75);
+					-webkit-transform: scale(1.75);
+					-ms-transform: scale(1.75);
 				}
 				.action-downvote:hover svg,
 				.action-upvote:hover svg {
