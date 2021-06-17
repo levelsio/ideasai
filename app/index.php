@@ -234,6 +234,8 @@
 									$('.center-idea-container table').css('transform','translate3d('+(-windowWidth*2)+'px,0px,0px) rotate(45deg)');
 									setTimeout(function() {
 										$('.center-idea-container .action-downvote').removeClass('active');
+										$('.center-idea-container table').removeClass('transition');
+										$('.center-idea-container table').css('transform','none');
 									},250);
 									return;
 								}
@@ -246,6 +248,9 @@
 									$('.center-idea-container .action-upvote').addClass('active');
 									setTimeout(function() {
 										$('.center-idea-container .action-upvote').removeClass('active');
+										$('.center-idea-container table').removeClass('transition');
+										$('.center-idea-container table').css('transform','none');
+
 									},250);
 									return;
 								}
@@ -264,21 +269,6 @@
 						});
 					/* </dragging logic> */
 
-
-					/* <keys> */
-						$(document).keydown(function(e) {
-							/* <left arrow> */
-								if(e.which==37) {
-									$('.center-idea-container .action-downvote').click();;
-								}
-							/* </left arrow> */
-							/* <right arrow> */
-								if(e.which==39) {
-									$('.center-idea-container .action-upvote').click();
-								}
-							/* </right arrow> */
-						});
-					/* </keys> */
 
 
 
