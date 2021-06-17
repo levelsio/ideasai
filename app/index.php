@@ -592,7 +592,7 @@
 					padding-bottom:calc(22vh);
 				}
 				.center-idea-container table.transition {
-					transition:transform 0.5s;
+					transition:transform 0.25s;
 					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
 				}
 				.center-idea-container table {
@@ -631,7 +631,7 @@
 					}
 				/*}*/
 				.center-idea-container table {
-					transition:transform 1s;
+					transition:transform 0.5s;
 					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
 					border:none;
 					border-radius:12px;
