@@ -710,7 +710,8 @@
 				<?generateIdeaTable($randomIdea,true,'random');?>
 
 				<p style="font-size:14px;" class="how-to-use-guide">
-					Press <strong>X</strong> or your left arrow key to dislike, press ❤️ or your right arrow key to like the idea
+					X Swipe left, or your left arrow key to dislike<br/>
+					❤️ Swipe right, or your right arrow key to like the idea
 				</p>
 			</div>
 
