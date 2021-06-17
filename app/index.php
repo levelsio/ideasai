@@ -227,7 +227,7 @@
 								$('.center-idea-container .action-downvote').removeClass('active');
 								console.log('dragRelativeX',dragRelativeX);
 								if(dragRelativeX<-100) {
-									console.log('drag left');
+									console.log('drag left: '+dragRelativeX);
 									$('.center-idea-container .action-downvote').click();;
 									$('.center-idea-container .action-downvote').addClass('active');
 									$('.center-idea-container table').addClass('transition');
@@ -238,7 +238,7 @@
 									return;
 								}
 								else if(dragRelativeX>100) {
-									console.log('drag right');
+									console.log('drag right: '+dragRelativeX);
 									$('.center-idea-container .action-upvote').click();
 									$('.center-idea-container table').addClass('transition');
 									$('.center-idea-container table').css('transform','translate3d('+(windowWidth*2)+'px,0px,0px) rotate(45deg)');
