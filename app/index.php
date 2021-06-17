@@ -193,16 +193,16 @@
 							dragRelativeY=(draggingY-dragCardInitialY-dragCardInitialMouseY);
 
 							if(dragRelativeX<-10) {
-								$('.center-idea-container .action-upvote').removeClass('active');
-								$('.center-idea-container .action-downvote').addClass('active');
+								$('.center-idea-container .action-upvote').removeClass('active').css('opacity',0.5);
+								$('.center-idea-container .action-downvote').addClass('active').css('opacity',1);
 							}
 							else if(dragRelativeX>10) {
-								$('.center-idea-container .action-upvote').addClass('active');
-								$('.center-idea-container .action-downvote').removeClass('active');
+								$('.center-idea-container .action-upvote').addClass('active').css('opacity',1);
+								$('.center-idea-container .action-downvote').removeClass('active').css('opacity',0.5);
 							}
 							else {
-								$('.center-idea-container .action-upvote').removeClass('active');
-								$('.center-idea-container .action-downvote').removeClass('active');	
+								$('.center-idea-container .action-upvote').removeClass('active').css('opacity',1);
+								$('.center-idea-container .action-downvote').removeClass('active').css('opacity',1);
 							}
 
 							/* <rotate card when dragging> */
@@ -262,6 +262,8 @@
 										$('.center-idea-container table').removeClass('transition');
 									},125);
 								}
+								$('.center-idea-container .action-upvote').removeClass('active').css('opacity',1);
+								$('.center-idea-container .action-downvote').removeClass('active').css('opacity',1);
 							/* </check if dragged to left/right> */
 
 
