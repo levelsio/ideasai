@@ -596,6 +596,14 @@
 					padding:20vh;
 					padding-bottom:calc(22vh);
 				}
+				.center-idea-container table {
+					-webkit-touch-callout: none;
+					-webkit-user-select: none;
+					-khtml-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					user-select: none;
+				}
 				@media (max-height:1000px) {
 					.center-idea-container {
 						padding-top:10vh;
