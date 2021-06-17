@@ -144,8 +144,12 @@
 					
 					document.body.style.cursor='default';
 
+					/* fix size issue width td doesn't stretch with short ideas */
+					$('.center-idea-container table .td_idea').css('width',($('.center-idea-container table').width()+'px'));
+
 					$(window).resize(function() {
 						windowWidth=$(window).width();
+						$('.center-idea-container table .td_idea').css('width',($('.center-idea-container table').width()+'px'));
 					});
 					
 					$('input.email').bind('keyup',function(e) {
@@ -335,6 +339,7 @@
 								$('tr#id_'+reply.callback_id).find('.votes').text(reply.new_idea.votes);
 								$('tr#id_'+reply.callback_id).attr('id','id_'+reply.new_idea.id);
 							}
+							$('.center-idea-container table .td_idea').css('width',($('.center-idea-container table').width()+'px'));
 						});
 					});
 
@@ -375,6 +380,7 @@
 								$('tr#id_'+reply.callback_id).find('.votes').text(reply.new_idea.votes);
 								$('tr#id_'+reply.callback_id).attr('id','id_'+reply.new_idea.id);
 							}
+							$('.center-idea-container table .td_idea').css('width',($('.center-idea-container table').width()+'px'));
 						});
 					});
 
