@@ -399,7 +399,7 @@
 								}
 							/* </right arrow> */
 							/* <left arrow> */
-								if(e.which==37 || e.which=88 /* X */) {
+								if(e.which==37 || e.which==88 /* X */) {
 									$('.action-downvote').eq(0).click();
 									setTimeout(function() {
 										$(window).scrollTop(0);
