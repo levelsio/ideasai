@@ -712,7 +712,7 @@
 
 				<p style="font-size:14px;" class="how-to-use-guide">
 					✖ Swipe left, or your left arrow key to dislike<br/>
-					❤️ Swipe right, or your right arrow key to like the idea
+					❤️ Swipe right, or your right arrow key to like
 				</p>
 			</div>
 
