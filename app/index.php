@@ -193,16 +193,16 @@
 							dragRelativeY=(draggingY-dragCardInitialY-dragCardInitialMouseY);
 
 							if(dragRelativeX<-10) {
-								$('.controls .like').removeClass('active');
-								$('.controls .dislike').addClass('active');
+								$('.center-idea-container .action-upvote').removeClass('active');
+								$('.center-idea-container .action-downvote').addClass('active');
 							}
 							else if(dragRelativeX>10) {
-								$('.controls .like').addClass('active');
-								$('.controls .dislike').removeClass('active');
+								$('.center-idea-container .action-upvote').addClass('active');
+								$('.center-idea-container .action-downvote').removeClass('active');
 							}
 							else {
-								$('.controls .like').removeClass('active');
-								$('.controls .dislike').removeClass('active');	
+								$('.center-idea-container .action-upvote').removeClass('active');
+								$('.center-idea-container .action-downvote').removeClass('active');	
 							}
 
 							/* <rotate card when dragging> */
@@ -223,24 +223,24 @@
 							$('.top_card').addClass('transition');
 
 							/* <check if dragged to left/right> */
-								$('.controls .like').removeClass('active');
-								$('.controls .dislike').removeClass('active');
-								consoleLog('dragRelativeX',dragRelativeX);
+								$('.center-idea-container .action-upvote').removeClass('active');
+								$('.center-idea-container .action-downvote').removeClass('active');
+								console.log('dragRelativeX',dragRelativeX);
 								if(dragRelativeX<-10) {
-									consoleLog('drag left');
+									console.log('drag left');
 									dislike();
-									$('.controls .dislike').addClass('active');
+									$('.center-idea-container .action-downvote').addClass('active');
 									setTimeout(function() {
-										$('.controls .dislike').removeClass('active');
+										$('.center-idea-container .action-downvote').removeClass('active');
 									},250);
 									return;
 								}
 								else if(dragRelativeX>10) {
-									consoleLog('drag right');
+									console.log('drag right');
 									like();
-									$('.controls .like').addClass('active');
+									$('.center-idea-container .action-upvote').addClass('active');
 									setTimeout(function() {
-										$('.controls .like').removeClass('active');
+										$('.center-idea-container .action-upvote').removeClass('active');
 									},250);
 									return;
 								}
