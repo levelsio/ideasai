@@ -546,6 +546,8 @@
 					margin-right:7px;
 					height:35px;
 				}
+				.action-downvote.active svg,
+				.action-upvote.active svg
 				.action-downvote:hover svg,
 				.action-upvote:hover svg {
 					transform: scale(1.2856);
