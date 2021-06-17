@@ -139,6 +139,130 @@
 						}
 					});
 
+					/* <dragging logic> */
+						$('body').on('mousedown touchstart','.center-idea-container table',function(e) {
+							if(!currentCardUserId) return;
+							if(typeof e.originalEvent.touches !=='undefined') {
+								/* touch device */
+								draggingX=e.originalEvent.touches[0].clientX;
+								draggingY=e.originalEvent.touches[0].clientY;
+							}
+							else {
+								/* mouse device */
+								draggingX=e.clientX;
+								draggingY=e.clientY;
+							}
+							draggingCard=this;
+							draggingNow=true;
+							dragCardWidth=$('.center-idea-container table').width();
+							dragCardHeight=$('.center-idea-container table').height();
+							dragCardInitialX=$('.center-idea-container table').offset().left;
+							dragCardInitialY=$('.center-idea-container table').offset().top;
+							dragCardInitialMouseX=draggingX-dragCardInitialX;
+							dragCardInitialMouseY=draggingY-dragCardInitialY;
+						});
+
+						$('body').on('mousemove touchmove',function(e) {
+							if(!draggingNow) return;
+							if(typeof e.originalEvent.touches !=='undefined') {
+								/* touch device */
+								draggingX=e.originalEvent.touches[0].clientX;
+								draggingY=e.originalEvent.touches[0].clientY;
+							}
+							else {
+								/* mouse device */
+								draggingX=e.clientX;
+								draggingY=e.clientY;
+							}
+							dragRelativeX=(draggingX-dragCardInitialX-dragCardInitialMouseX);
+							dragRelativeY=(draggingY-dragCardInitialY-dragCardInitialMouseY);
+
+							if(dragRelativeX<-10) {
+								$('.controls .like').removeClass('active');
+								$('.controls .dislike').addClass('active');
+							}
+							else if(dragRelativeX>10) {
+								$('.controls .like').addClass('active');
+								$('.controls .dislike').removeClass('active');
+							}
+							else {
+								$('.controls .like').removeClass('active');
+								$('.controls .dislike').removeClass('active');	
+							}
+
+							/* <rotate card when dragging> */
+								rotateDeg=0;
+								if(dragRelativeX>0) {
+									rotateDeg=normalize(dragRelativeX,0,dragRelativeX+windowWidth/2)*25;
+								} else {
+									rotateDeg=-normalize(dragRelativeX,0,dragRelativeX-windowWidth/2)*25;
+								}
+							/* </rotate card when dragging> */
+
+							$(draggingCard).css('transform','translate3d('+dragRelativeX+'px,'+dragRelativeY+'px,0px) rotate('+rotateDeg+'deg)');
+						});
+						$('body').on('mouseup touchend',function(e) {
+							if(!currentCardUserId) return;
+							if(!draggingNow) return;
+							draggingNow=false;
+
+							$('.top_card').addClass('transition');
+
+							/* <check if dragged to left/right> */
+								$('.controls .like').removeClass('active');
+								$('.controls .dislike').removeClass('active');
+								consoleLog('dragRelativeX',dragRelativeX);
+								if(dragRelativeX<-10) {
+									consoleLog('drag left');
+									dislike();
+									$('.controls .dislike').addClass('active');
+									setTimeout(function() {
+										$('.controls .dislike').removeClass('active');
+									},250);
+									return;
+								}
+								else if(dragRelativeX>10) {
+									consoleLog('drag right');
+									like();
+									$('.controls .like').addClass('active');
+									setTimeout(function() {
+										$('.controls .like').removeClass('active');
+									},250);
+									return;
+								}
+								else {
+									/* return to center */
+									$('.top_card').addClass('transition');
+									$('.top_card').css('transform','translate3d(0px,0px,0px)');
+									setTimeout(function() {
+										$('.top_card').removeClass('transition');
+									},125);
+								}
+							/* </check if dragged to left/right> */
+
+
+
+						});
+					/* </dragging logic> */
+
+
+					/* <keys> */
+						$(document).keydown(function(e) {
+							/* <left arrow> */
+								if(e.which==37) {
+									dislike();
+								}
+							/* </left arrow> */
+							/* <right arrow> */
+								if(e.which==39) {
+									like();
+								}
+							/* </right arrow> */
+						});
+					/* </keys> */
+
+
+
 					$('.action-subscribe').bind('click',function() {
 						activeAjax=$.ajax({
 							async:true,
