@@ -230,6 +230,8 @@
 									console.log('drag left');
 									$('.center-idea-container .action-downvote').click();;
 									$('.center-idea-container .action-downvote').addClass('active');
+									$('.center-idea-container table').addClass('transition');
+									$('.center-idea-container table').css('transform','translate3d('+(-windowWidth*2)+'px,0px,0px) rotate(45deg)');
 									setTimeout(function() {
 										$('.center-idea-container .action-downvote').removeClass('active');
 									},250);
@@ -238,6 +240,9 @@
 								else if(dragRelativeX>10) {
 									console.log('drag right');
 									$('.center-idea-container .action-upvote').click();
+									$('.center-idea-container table').addClass('transition');
+									$('.center-idea-container table').css('transform','translate3d('+(windowWidth*2)+'px,0px,0px) rotate(45deg)');
+									
 									$('.center-idea-container .action-upvote').addClass('active');
 									setTimeout(function() {
 										$('.center-idea-container .action-upvote').removeClass('active');
@@ -595,6 +600,10 @@
 				.center-idea-container {
 					padding:20vh;
 					padding-bottom:calc(22vh);
+				}
+				.center-idea-container table.transition {
+					transition:transform 1s;
+					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
 				}
 				.center-idea-container table {
 					-webkit-touch-callout: none;
