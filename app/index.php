@@ -226,7 +226,7 @@
 								$('.center-idea-container .action-upvote').removeClass('active');
 								$('.center-idea-container .action-downvote').removeClass('active');
 								console.log('dragRelativeX',dragRelativeX);
-								if(dragRelativeX<-100) {
+								if(dragRelativeX<-150) {
 									console.log('drag left: '+dragRelativeX);
 									$('.center-idea-container .action-downvote').click();;
 									$('.center-idea-container .action-downvote').addClass('active');
@@ -239,7 +239,7 @@
 									},250);
 									return;
 								}
-								else if(dragRelativeX>100) {
+								else if(dragRelativeX>150) {
 									console.log('drag right: '+dragRelativeX);
 									$('.center-idea-container .action-upvote').click();
 									$('.center-idea-container table').addClass('transition');
@@ -547,7 +547,11 @@
 					height:35px;
 				}
 				.action-downvote.active svg,
-				.action-upvote.active svg
+				.action-upvote.active svg {
+					transform: scale(2);
+					-webkit-transform: scale(2);
+					-ms-transform: scale(2);
+				}
 				.action-downvote:hover svg,
 				.action-upvote:hover svg {
 					transform: scale(1.2856);
