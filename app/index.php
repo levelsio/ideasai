@@ -613,6 +613,13 @@
 					-ms-user-select: none;
 					user-select: none;
 				}
+				.center-idea-container table:hover {
+					opacity: 0.75;
+				}
+				.center-idea-container table:active,
+				.center-idea-container table.active {
+					opacity: 0.55;
+				}
 				@media (max-height:1000px) {
 					.center-idea-container {
 						padding-top:10vh;
