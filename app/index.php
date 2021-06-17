@@ -226,7 +226,7 @@
 								$('.center-idea-container .action-upvote').removeClass('active');
 								$('.center-idea-container .action-downvote').removeClass('active');
 								console.log('dragRelativeX',dragRelativeX);
-								if(dragRelativeX<-50) {
+								if(dragRelativeX<-100) {
 									console.log('drag left');
 									$('.center-idea-container .action-downvote').click();;
 									$('.center-idea-container .action-downvote').addClass('active');
@@ -237,7 +237,7 @@
 									},250);
 									return;
 								}
-								else if(dragRelativeX>50) {
+								else if(dragRelativeX>100) {
 									console.log('drag right');
 									$('.center-idea-container .action-upvote').click();
 									$('.center-idea-container table').addClass('transition');
