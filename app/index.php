@@ -220,7 +220,7 @@
 							if(!draggingNow) return;
 							draggingNow=false;
 
-							$('.top_card').addClass('transition');
+							$('.center-idea-container table').addClass('transition');
 
 							/* <check if dragged to left/right> */
 								$('.center-idea-container .action-upvote').removeClass('active');
@@ -246,10 +246,10 @@
 								}
 								else {
 									/* return to center */
-									$('.top_card').addClass('transition');
-									$('.top_card').css('transform','translate3d(0px,0px,0px)');
+									$('.center-idea-container table').addClass('transition');
+									$('.center-idea-container table').css('transform','translate3d(0px,0px,0px)');
 									setTimeout(function() {
-										$('.top_card').removeClass('transition');
+										$('.center-idea-container table').removeClass('transition');
 									},125);
 								}
 							/* </check if dragged to left/right> */
