@@ -673,7 +673,7 @@
 					width:140px;
 				}
 				.td_idea {
-					min-width: 100%;
+					min-width: calc(100% - 14px - 14px - 14px);
 					text-align:left;
 				}
 				/*@media (max-width:1000px) {*/
