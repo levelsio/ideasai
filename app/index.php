@@ -228,7 +228,7 @@
 								console.log('dragRelativeX',dragRelativeX);
 								if(dragRelativeX<-10) {
 									console.log('drag left');
-									dislike();
+									$('.center-idea-container .action-downvote').click();;
 									$('.center-idea-container .action-downvote').addClass('active');
 									setTimeout(function() {
 										$('.center-idea-container .action-downvote').removeClass('active');
@@ -237,7 +237,7 @@
 								}
 								else if(dragRelativeX>10) {
 									console.log('drag right');
-									like();
+									$('.center-idea-container .action-upvote').click();
 									$('.center-idea-container .action-upvote').addClass('active');
 									setTimeout(function() {
 										$('.center-idea-container .action-upvote').removeClass('active');
@@ -264,12 +264,12 @@
 						$(document).keydown(function(e) {
 							/* <left arrow> */
 								if(e.which==37) {
-									dislike();
+									$('.center-idea-container .action-downvote').click();;
 								}
 							/* </left arrow> */
 							/* <right arrow> */
 								if(e.which==39) {
-									like();
+									$('.center-idea-container .action-upvote').click();
 								}
 							/* </right arrow> */
 						});
