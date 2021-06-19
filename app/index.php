@@ -2096,7 +2096,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 	
 	function sendToAdminTelegram($message) {
 		global $config;
-		if(stripos($message,'❌')) file_put_contents('/srv/lastAdminTelegramTimestamp.txt',time()."\n".$message);
+		if(stripos($message,'❌')!==false) file_put_contents('/srv/lastAdminTelegramTimestamp.txt',time()."\n".$message);
 		file_get_contents('https://api.telegram.org/bot'.$config['telegramAdminChat']['bot_token'].'/sendMessage?chat_id='.$config['telegramAdminChat']['chat_id'].'&text='.urlencode($message).'&disable_web_page_preview=true');
 	}
 ?>
