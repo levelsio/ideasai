@@ -843,7 +843,7 @@
 
 
 			<h2>
-				🔥 All-time top ideas
+				💯 All-time top ideas
 			</h2>
 			<?generateIdeaTable($topIdeas);?>
 			<br/>
