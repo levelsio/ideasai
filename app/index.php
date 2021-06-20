@@ -192,11 +192,11 @@
 							dragRelativeX=(draggingX-dragCardInitialX-dragCardInitialMouseX);
 							dragRelativeY=(draggingY-dragCardInitialY-dragCardInitialMouseY);
 
-							if(dragRelativeX<-10) {
+							if(dragRelativeX<-100) {
 								$('.center-idea-container .action-upvote').removeClass('active').css('opacity',0.5);
 								$('.center-idea-container .action-downvote').addClass('active').css('opacity',1);
 							}
-							else if(dragRelativeX>10) {
+							else if(dragRelativeX>100) {
 								$('.center-idea-container .action-upvote').addClass('active').css('opacity',1);
 								$('.center-idea-container .action-downvote').removeClass('active').css('opacity',0.5);
 							}
