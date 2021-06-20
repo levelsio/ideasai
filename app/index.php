@@ -517,11 +517,11 @@
 					border-radius:5px;
 					border-collapse:collapse;
 					width:100%;
-					max-width:700px;
+					max-width:500px;
 				}
 				p {
 					width:100%;
-					max-width:700px;
+					max-width:500px;
 					margin:14px auto;
 				}
 				.table .tr .td {
@@ -529,7 +529,7 @@
 					padding:21px;
 				}
 				h2 {
-					max-width:700px;
+					max-width:500px;
 					width:100%;
 					text-align:left;
 					display:block;
@@ -1776,7 +1776,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 		// </remove ideas w/ banned words>
 
 		foreach($ideas as $idea) {
-			?><div class="table" style="max-width:700px;margin:14px auto;"><?
+			?><div class="table" style="max-width:500px;margin:14px auto;"><?
 
 				?><div id="id_<?=$idea['id']?>" class="tr container"><?
 					?><div class="td td_idea">
