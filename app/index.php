@@ -208,9 +208,9 @@
 							/* <rotate card when dragging> */
 								rotateDeg=2;
 								if(dragRelativeX>0) {
-									rotateDeg=normalize(dragRelativeX,0,dragRelativeX+windowWidth/2)*25+2;
+									rotateDeg=normalize(dragRelativeX,0,dragRelativeX+windowWidth/2)*25+1;
 								} else {
-									rotateDeg=-normalize(dragRelativeX,0,dragRelativeX-windowWidth/2)*25+2;
+									rotateDeg=-normalize(dragRelativeX,0,dragRelativeX-windowWidth/2)*25+1;
 								}
 							/* </rotate card when dragging> */
 
@@ -257,7 +257,7 @@
 								else {
 									/* return to center */
 									$('.center-idea-container .table').addClass('transition');
-									$('.center-idea-container .table').css('transform','translate3d(0px,0px,0px) rotate(2deg)');
+									$('.center-idea-container .table').css('transform','translate3d(0px,0px,0px) rotate(1deg)');
 									setTimeout(function() {
 										$('.center-idea-container .table').removeClass('transition');
 									},125);
@@ -1813,7 +1813,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 		// </remove ideas w/ banned words>
 
 		foreach($ideas as $idea) {
-			?><div class="table" style="<?if($soloIdea){?>transform:rotate(2deg);<?}?>max-width:400px;margin:14px auto;"><?
+			?><div class="table" style="<?if($soloIdea){?>transform:rotate(1deg);<?}?>max-width:400px;margin:14px auto;"><?
 
 				?><div id="id_<?=$idea['id']?>" class="tr container"><?
 					?><div class="td td_idea">
