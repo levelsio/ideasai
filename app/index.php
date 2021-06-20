@@ -873,7 +873,7 @@
 				Please ❤️ like ideas that you feel are promising and ❌ dislike ideas that are bad, too vague, too obvious, or already exist. Your ratings are fed back into OpenAI, so <strong>you (and others) are constantly training the model</strong> what good and bad ideas are which improves the next idea it comes up with.
 			</p>
 			<p clas="text" style="text-align:left;line-height:1.8;">
-				The A.I. never sleeps, so it's continously thinking of new ideas and when it comes up with a new one, it shows up here automatically (scroll down to New to see them come in). If you like an idea you can claim it and you get it exclusively and it gets removed from the site so that nobody else can find out about it.
+				The A.I. never sleeps, so it's continously thinking of new ideas and when it comes up with a new one, it shows up here automatically (scroll down to New to see them come in). You can also subscribe to get a weekly list of the highest voted new ideas.
 			</p>
 			<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
 				<strong>
