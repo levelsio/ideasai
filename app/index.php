@@ -1813,7 +1813,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 		// </remove ideas w/ banned words>
 
 		foreach($ideas as $idea) {
-			?><div class="table" style="<?if($soloIdeas){?>transform:rotate(2deg);<?}?>max-width:400px;margin:14px auto;"><?
+			?><div class="table" style="<?if($soloIdea){?>transform:rotate(2deg);<?}?>max-width:400px;margin:14px auto;"><?
 
 				?><div id="id_<?=$idea['id']?>" class="tr container"><?
 					?><div class="td td_idea">
