@@ -453,8 +453,8 @@
 							$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/24;
 						}
 					echo number_format($ideasInLastH);
-				?> ideas generated today.<br/>
-				<?=number_format(count($ideas))?> ideas generated so far.<br/>
+				?> ideas generated today.<br/><?/*
+				<?=number_format(count($ideas))?> ideas generated so far.<br/>*/?>
 			</p>
 			<p style="margin-bottom:28px;">
 				by <a href="https://twitter.com/levelsio">@levelsio</a>
