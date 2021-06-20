@@ -299,9 +299,7 @@
 
 						votes=parseInt($(this).parent().find('.votes').data('votes'))+1;
 						$(this).parent().find('.votes').text(votes);
-						$(this).addClass('active').css('opacity',1);
-						$(this).parent().find('.action-downvote').removeClass('active').css('opacity',0.5);
-						
+
 						soloIdea=false;
 						console.log($(this).data('id'));
 						if($(this).data('solo')) {
@@ -309,6 +307,14 @@
 							document.body.style.cursor='wait';
 							$('.tr#id_'+$(this).data('id')).fadeTo(200,0.00001);
 						}
+
+						if(!soloIdea) {
+							// set upvote of idea to show it's been voted on 
+							$(this).addClass('active').css('opacity',1);
+							$(this).parent().find('.action-downvote').removeClass('active').css('opacity',0.5);
+						}
+						
+
 						activeAjax=$.ajax({
 							async:true,
 							url: '/',
@@ -349,6 +355,13 @@
 							document.body.style.cursor='wait';
 							$('.tr#id_'+$(this).data('id')).fadeTo(200,0.00001);
 						}
+
+						if(!soloIdea) {
+							// set upvote of idea to show it's been voted on 
+							$(this).addClass('active').css('opacity',1);
+							$(this).parent().find('.action-upvote').removeClass('active').css('opacity',0.5);
+						}
+						
 						activeAjax=$.ajax({
 							async:true,
 							url: '/',
