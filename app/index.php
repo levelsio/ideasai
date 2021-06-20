@@ -156,7 +156,7 @@
 					});
 
 					/* <dragging logic> */
-						$('body').on('mousedown touchstart','.center-idea-container table',function(e) {
+						$('body').on('mousedown touchstart','.center-idea-container .table',function(e) {
 							if(typeof e.originalEvent.touches !=='undefined') {
 								/* touch device */
 								draggingX=e.originalEvent.touches[0].clientX;
@@ -169,10 +169,10 @@
 							}
 							draggingCard=this;
 							draggingNow=true;
-							dragCardWidth=$('.center-idea-container table').width();
-							dragCardHeight=$('.center-idea-container table').height();
-							dragCardInitialX=$('.center-idea-container table').offset().left;
-							dragCardInitialY=$('.center-idea-container table').offset().top;
+							dragCardWidth=$('.center-idea-container .table').width();
+							dragCardHeight=$('.center-idea-container .table').height();
+							dragCardInitialX=$('.center-idea-container .table').offset().left;
+							dragCardInitialY=$('.center-idea-container .table').offset().top;
 							dragCardInitialMouseX=draggingX-dragCardInitialX;
 							dragCardInitialMouseY=draggingY-dragCardInitialY;
 						});
@@ -220,7 +220,7 @@
 							if(!draggingNow) return;
 							draggingNow=false;
 
-							$('.center-idea-container table').addClass('transition');
+							$('.center-idea-container .table').addClass('transition');
 
 							/* <check if dragged to left/right> */
 								$('.center-idea-container .action-upvote').removeClass('active');
@@ -230,36 +230,36 @@
 									console.log('drag left: '+dragRelativeX);
 									$('.center-idea-container .action-downvote').click();;
 									$('.center-idea-container .action-downvote').addClass('active');
-									$('.center-idea-container table').addClass('transition');
-									$('.center-idea-container table').css('transform','translate3d('+(-windowWidth*2)+'px,0px,0px) rotate(45deg)');
+									$('.center-idea-container .table').addClass('transition');
+									$('.center-idea-container .table').css('transform','translate3d('+(-windowWidth*2)+'px,0px,0px) rotate(45deg)');
 									setTimeout(function() {
 										$('.center-idea-container .action-downvote').removeClass('active');
-										$('.center-idea-container table').removeClass('transition');
-										$('.center-idea-container table').css('transform','none');
+										$('.center-idea-container .table').removeClass('transition');
+										$('.center-idea-container .table').css('transform','none');
 									},250);
 									return;
 								}
 								else if(dragRelativeX>300) {
 									console.log('drag right: '+dragRelativeX);
 									$('.center-idea-container .action-upvote').click();
-									$('.center-idea-container table').addClass('transition');
-									$('.center-idea-container table').css('transform','translate3d('+(windowWidth*2)+'px,0px,0px) rotate(45deg)');
+									$('.center-idea-container .table').addClass('transition');
+									$('.center-idea-container .table').css('transform','translate3d('+(windowWidth*2)+'px,0px,0px) rotate(45deg)');
 									
 									$('.center-idea-container .action-upvote').addClass('active');
 									setTimeout(function() {
 										$('.center-idea-container .action-upvote').removeClass('active');
-										$('.center-idea-container table').removeClass('transition');
-										$('.center-idea-container table').css('transform','none');
+										$('.center-idea-container .table').removeClass('transition');
+										$('.center-idea-container .table').css('transform','none');
 
 									},250);
 									return;
 								}
 								else {
 									/* return to center */
-									$('.center-idea-container table').addClass('transition');
-									$('.center-idea-container table').css('transform','translate3d(0px,0px,0px)');
+									$('.center-idea-container .table').addClass('transition');
+									$('.center-idea-container .table').css('transform','translate3d(0px,0px,0px)');
 									setTimeout(function() {
-										$('.center-idea-container table').removeClass('transition');
+										$('.center-idea-container .table').removeClass('transition');
 									},125);
 								}
 								$('.center-idea-container .action-upvote').removeClass('active').css('opacity',1);
@@ -298,9 +298,9 @@
 						$('.how-to-use-guide').fadeOut();
 
 						// if($(this).data('solo')==true) {
-						// 	draggingCard=$('.center-idea-container table')[0];
-						// 	$('.center-idea-container table').addClass('transition');
-						// 	$('.center-idea-container table').css('transform','translate3d('+(windowWidth*2)+'px,0px,0px) rotate(45deg)');
+						// 	draggingCard=$('.center-idea-container .table')[0];
+						// 	$('.center-idea-container .table').addClass('transition');
+						// 	$('.center-idea-container .table').css('transform','translate3d('+(windowWidth*2)+'px,0px,0px) rotate(45deg)');
 						// }
 
 						votes=parseInt($(this).parent().find('.votes').data('votes'))+1;
@@ -511,7 +511,7 @@
 					background:#f9f9f9;
 					text-align:center;
 				}
-				table {
+				.table {
 					box-shadow:var(--box-shadow-central);
 					background:#fff;
 					border-radius:5px;
@@ -524,7 +524,7 @@
 					max-width:700px;
 					margin:14px auto;
 				}
-				table tr td {
+				.table .tr .td {
 					font-weight:bold;
 					padding:21px;
 				}
@@ -587,7 +587,7 @@
 				a:active {
 					opacity:0.5;
 				}
-				table tr:hover td {
+				.table .tr:hover .td {
 					/*background:#f9f9f9;*/
 				}
 				.time_ago {
@@ -599,11 +599,11 @@
 					padding:20vh;
 					padding-bottom:calc(22vh);
 				}
-				.center-idea-container table.transition {
+				.center-idea-container .table.transition {
 					transition:transform 1s;
 					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
 				}
-				.center-idea-container table {
+				.center-idea-container .table {
 					-webkit-touch-callout: none;
 					-webkit-user-select: none;
 					-khtml-user-select: none;
@@ -612,11 +612,11 @@
 					user-select: none;
 					cursor: grab;
 				}
-				.center-idea-container table:hover {
+				.center-idea-container .table:hover {
 					/*opacity: 0.75;*/
 				}
-				.center-idea-container table:active,
-				.center-idea-container table.active {
+				.center-idea-container .table:active,
+				.center-idea-container .table.active {
 					cursor: grabbing;
 					/*opacity: 0.5;*/
 				}
@@ -638,7 +638,7 @@
 						width:calc(100% - 14px - 14px);
 					}
 				/*}*/
-				.center-idea-container table {
+				.center-idea-container .table {
 					border:none;
 					border-radius:12px;
 					z-index: 2;
@@ -685,7 +685,7 @@
 					text-align:left;
 				}
 				/*@media (max-width:1000px) {*/
-					table {
+					.table {
 						display:block;
 					}
 					.td_idea,
@@ -1754,7 +1754,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 
 		$y=0;
 		foreach($ideas as $idea) {
-			?><div style="max-width:700px;margin:14px auto;"><?
+			?><div class="table" style="max-width:700px;margin:14px auto;"><?
 
 				foreach($bannedIdeas as $bannedIdea) {
 					if(stripos($idea['idea'],$bannedIdea)!==false) {
@@ -1763,8 +1763,8 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 					}
 				}
 
-				?><div id="id_<?=$idea['id']?>" class="container"><?
-					?><div class="td_idea">
+				?><div id="id_<?=$idea['id']?>" class="tr container"><?
+					?><div class="td td_idea">
 						<span class="idea"><?
 						$text=$idea['idea'];
 						$i=1;
@@ -1776,7 +1776,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 						<a href="javascript:" class="claim-idea" style="font-size:12px;opacity:0.5;font-weight:normal;">
 							Claim this idea
 						</a>*/?>
-					</div><div class="td_votes">
+					</div><div class="td td_votes">
 						<?/*<div class="action-upvote" data-idea-type="<?=$ideaType?>" data-solo="<?=$soloIdea ? 'true' : '';?>" data-id="<?=$idea['id']?>" style="text-decoration:none;font-size:28px;">&nbsp;▲&nbsp;</div>*/?>
 
 
