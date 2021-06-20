@@ -1753,15 +1753,30 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 		global $bannedIdeas;
 
 		$y=0;
-		foreach($ideas as $idea) {
-			?><div class="table" style="max-width:700px;margin:14px auto;"><?
 
+		// <remove ideas w/ banned words>
+			$filteredIdeas=array();
+			foreach($ideas as $idea) {
 				foreach($bannedIdeas as $bannedIdea) {
 					if(stripos($idea['idea'],$bannedIdea)!==false) {
 						// banned word
 						continue(2);
 					}
 				}
+				array_push($filteredIdeas,$idea);
+			}
+			$ideas=$filteredIdeas;
+			if(empty($filteredIdeas)) {
+				?>
+				<script>
+					/* reload for more ideas */
+					window.location.reload();
+				</script><?
+			}
+		// </remove ideas w/ banned words>
+
+		foreach($ideas as $idea) {
+			?><div class="table" style="max-width:700px;margin:14px auto;"><?
 
 				?><div id="id_<?=$idea['id']?>" class="tr container"><?
 					?><div class="td td_idea">
