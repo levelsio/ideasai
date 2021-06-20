@@ -1766,7 +1766,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 				array_push($filteredIdeas,$idea);
 			}
 			$ideas=$filteredIdeas;
-			if(empty($filteredIdeas)) {
+			if($soloIdea && empty($filteredIdeas)) {
 				?>
 				<script>
 					/* reload for more ideas */
