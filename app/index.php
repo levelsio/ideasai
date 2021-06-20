@@ -802,7 +802,7 @@
 
 			<?if($thisMonthsTopIdeas) {?>
 				<h2>
-					🗓 This month's top ideas
+					🏆 This month's top ideas
 				</h2>
 				<?generateIdeaTable($thisMonthsTopIdeas);?>
 				<br/>
@@ -810,7 +810,7 @@
 
 			<?if($thisWeeksTopIdeas) {?>
 				<h2>
-					🗓 This week's top ideas
+					🎖 This week's top ideas
 				</h2>
 				<?generateIdeaTable($thisWeeksTopIdeas);?>
 				<br/>
@@ -818,7 +818,7 @@
 
 			<?if($yesterdaysTopIdeas) {?>
 				<h2>
-					🗓 Yesterday's top ideas
+					🏅 Yesterday's top ideas
 				</h2>
 				<?generateIdeaTable($yesterdaysTopIdeas);?>
 				<br/>
