@@ -531,7 +531,7 @@
 				h2 {
 					max-width:400px;
 					width:100%;
-					text-align:left;
+					text-align:center;
 					display:block;
 					margin:14px auto;
 				}
