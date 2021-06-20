@@ -206,11 +206,11 @@
 							}
 
 							/* <rotate card when dragging> */
-								rotateDeg=0;
+								rotateDeg=2;
 								if(dragRelativeX>0) {
-									rotateDeg=normalize(dragRelativeX,0,dragRelativeX+windowWidth/2)*25;
+									rotateDeg=normalize(dragRelativeX,0,dragRelativeX+windowWidth/2)*25+2;
 								} else {
-									rotateDeg=-normalize(dragRelativeX,0,dragRelativeX-windowWidth/2)*25;
+									rotateDeg=-normalize(dragRelativeX,0,dragRelativeX-windowWidth/2)*25+2;
 								}
 							/* </rotate card when dragging> */
 
