@@ -257,7 +257,7 @@
 								else {
 									/* return to center */
 									$('.center-idea-container .table').addClass('transition');
-									$('.center-idea-container .table').css('transform','translate3d(0px,0px,0px)');
+									$('.center-idea-container .table').css('transform','translate3d(0px,0px,0px) rotate(2deg)');
 									setTimeout(function() {
 										$('.center-idea-container .table').removeClass('transition');
 									},125);
