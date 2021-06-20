@@ -694,11 +694,11 @@
 						text-align:center;
 						width:auto;
 					}
-					.td_idea {
+					.table .tr .td.td_idea {
 						border:none;
 						padding-bottom:14px;
 					}
-					.td_votes {
+					.table .tr .td.td_votes {
 						padding-top:0;
 						width:calc(100% - 14px - 14px - 14px);
 					}
