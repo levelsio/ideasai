@@ -1754,7 +1754,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 
 		$y=0;
 		foreach($ideas as $idea) {
-			?><table style="max-width:700px;margin:14px auto;"><?
+			?><div style="max-width:700px;margin:14px auto;"><?
 
 				foreach($bannedIdeas as $bannedIdea) {
 					if(stripos($idea['idea'],$bannedIdea)!==false) {
@@ -1763,8 +1763,8 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 					}
 				}
 
-				?><tr id="id_<?=$idea['id']?>" class="container"><?
-					?><td class="td_idea">
+				?><div id="id_<?=$idea['id']?>" class="container"><?
+					?><div class="td_idea">
 						<span class="idea"><?
 						$text=$idea['idea'];
 						$i=1;
@@ -1776,7 +1776,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 						<a href="javascript:" class="claim-idea" style="font-size:12px;opacity:0.5;font-weight:normal;">
 							Claim this idea
 						</a>*/?>
-					</td><td class="td_votes">
+					</div><div class="td_votes">
 						<?/*<div class="action-upvote" data-idea-type="<?=$ideaType?>" data-solo="<?=$soloIdea ? 'true' : '';?>" data-id="<?=$idea['id']?>" style="text-decoration:none;font-size:28px;">&nbsp;▲&nbsp;</div>*/?>
 
 
@@ -1798,10 +1798,10 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 						<?/*<div class="action-downvote" data-idea-type="<?=$ideaType?>" data-solo="<?=$soloIdea ? 'true' : '';?>" data-id="<?=$idea['id']?>" style="text-decoration:none;font-size:28px;">&nbsp;▼&nbsp;</div>*/?>
 
 						<?
-					?></td><?
-				?></tr><?
+					?></div><?
+				?></div><?
 				$y++;
-			?></table><?
+			?></div><?
 		}
 	}
 	function fixIdeaText($idea) {
