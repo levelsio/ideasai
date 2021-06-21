@@ -541,6 +541,9 @@
 					width:100%;
 					max-width:400px;
 					max-width:300px;
+					margin-left: 14px;
+					margin-right: 14px;
+					display: inline-block;
 				}
 				p {
 					width:100%;
