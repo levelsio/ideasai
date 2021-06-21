@@ -559,7 +559,7 @@
 				}
 
 				.action-upvote {
-					margin-top:5px;
+					margin-top:0;
 					margin-left:7px;
 				}
 				.action-upvote svg {
@@ -587,6 +587,7 @@
 					cursor:pointer;
 					display:inline-block;
 					vertical-align:middle;
+					font-size: 30px;
 				}
 				tr .votes {
 					display:inline-block;
@@ -1828,7 +1829,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 					</div><div class="td td_votes">
 						
 
-						<span class="action-downvote" data-idea-type="<?=$ideaType?>" data-solo="<?=$soloIdea ? 'true' : '';?>" data-id="<?=$idea['id']?>" style="text-decoration:none;font-size:28px;">
+						<span class="action-downvote" data-idea-type="<?=$ideaType?>" data-solo="<?=$soloIdea ? 'true' : '';?>" data-id="<?=$idea['id']?>">
 							<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/></svg>
 						</span>
 
@@ -1836,7 +1837,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 							echo number_format($idea['votes']);
 						?></span>
 
-						<span class="action-upvote" data-idea-type="<?=$ideaType?>" data-solo="<?=$soloIdea ? 'true' : '';?>" data-id="<?=$idea['id']?>" style="text-decoration:none;font-size:28px;">
+						<span class="action-upvote" data-idea-type="<?=$ideaType?>" data-solo="<?=$soloIdea ? 'true' : '';?>" data-id="<?=$idea['id']?>">
 							<svg aria-hidden="true" width="35" focusable="false" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
 						</span>	
 
