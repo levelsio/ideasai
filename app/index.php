@@ -769,7 +769,7 @@
 
 			<?if(!$_COOKIE['ideasai_subscribed']){?>
 				<div class="banner-subscribe" style="position:fixed;left:0;width:100%;bottom:0;text-align:center;line-height:1.8;background:#000;color:#fff;padding:14px;box-shadow:0 -1px -2px 0 rgba(0,0,0,.1);margin:0 auto;z-index:100;">
-					<strong style="width:calc(100% - 28px);display:block;">
+					<strong style="width:calc(100% - 28px);display:inline">
 						Join <?=number_format($emailCount)?> people who get the best new ideas by GPT-3 in their email weekly
 					</strong>
 					<input tabindex="1" type="email" class="email" placeholder="Type your email...">
