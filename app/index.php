@@ -530,7 +530,7 @@
 				}
 				body {
 					overflow-x: hidden;
-					width: 100%;
+					width: 100vw;
 					padding:14px;
 					background:#f9f9f9;
 					text-align:center;
