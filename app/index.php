@@ -559,12 +559,12 @@
 				}
 
 				.action-upvote {
-					margin-top:0;
+					margin-top:1px;
 					margin-left:7px;
 				}
 				.action-upvote svg {
 					fill:#ff4742;
-					height:30px;
+					height:27px;
 				}
 				.action-downvote svg {
 					margin-right:7px;
@@ -587,7 +587,6 @@
 					cursor:pointer;
 					display:inline-block;
 					vertical-align:middle;
-					font-size: 30px;
 				}
 				tr .votes {
 					display:inline-block;
