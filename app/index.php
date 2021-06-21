@@ -529,6 +529,8 @@
 					border-radius:5px;
 				}
 				body {
+					overflow-x: hidden;
+					width: 100%;
 					padding:14px;
 					background:#f9f9f9;
 					text-align:center;
