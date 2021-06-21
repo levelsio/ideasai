@@ -541,9 +541,10 @@
 					width:100%;
 					max-width:400px;
 					max-width:300px;
-					margin-left: 14px;
-					margin-right: 14px;
+					margin-left: 14px !important;
+					margin-right: 14px !important;
 					display: inline-block;
+					vertical-align:top;
 					border-radius:12px;
 					background: #fff9c9;
 				}
