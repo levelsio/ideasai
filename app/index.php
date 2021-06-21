@@ -685,6 +685,16 @@
 				.button:active {
 					opacity:0.5;
 				}
+				.button.action-subscribe {
+					background: #fff;
+					color: #000;
+					border: 1px solid #000;
+				}
+				.button.action-subscribe:hover {
+					background: #000;
+					color: #fff;
+					border: 1px solid #fff;
+				}
 				input.email {
 					margin-bottom:0;
 					margin-top:-1px;
@@ -742,7 +752,7 @@
 
 
 			<?if(!$_COOKIE['ideasai_subscribed']){?>
-				<div class="banner-subscribe" style="position:fixed;left:0;width:100vw;bottom:0;text-align:center;line-height:1.8;background:#fff;padding:14px;box-shadow:0 -1px -2px 0 rgba(0,0,0,.1);margin:0 auto;z-index:100;border-top:1px solid #eee;">
+				<div class="banner-subscribe" style="position:fixed;left:0;width:100vw;bottom:0;text-align:center;line-height:1.8;background:#000;color:#fff;padding:14px;box-shadow:0 -1px -2px 0 rgba(0,0,0,.1);margin:0 auto;z-index:100;border-top:1px solid #eee;">
 					<strong style="width:calc(100% - 28px);display:block;">
 						Join <?=number_format($emailCount)?> people who get the best new ideas by GPT-3 in their email weekly
 						<input tabindex="1" type="email" class="email" placeholder="Type your email...">
