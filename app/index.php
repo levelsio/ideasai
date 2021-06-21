@@ -663,8 +663,9 @@
 				/*}*/
 				.center-idea-container .table {
 					border:none;
-					/*border-radius:12px;*/
+					border-radius:12px;
 					z-index: 2;
+					background: #fff9c9;
 				}
 				.button {
 					border:1px solid #000;
