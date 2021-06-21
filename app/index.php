@@ -544,6 +544,8 @@
 					margin-left: 14px;
 					margin-right: 14px;
 					display: inline-block;
+					border-radius:12px;
+					background: #fff9c9;
 				}
 				p {
 					width:100%;
@@ -666,9 +668,7 @@
 				/*}*/
 				.center-idea-container .table {
 					border:none;
-					border-radius:12px;
 					z-index: 2;
-					background: #fff9c9;
 				}
 				.button {
 					border:1px solid #000;
