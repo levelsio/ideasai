@@ -528,9 +528,12 @@
 					padding:14px;
 					border-radius:5px;
 				}
-				body {
-					overflow-x: hidden;
+				html,body {
 					width: 100vw;
+					max-width: 100vw;
+					overflow-x: hidden;
+				}
+				body {
 					padding:14px;
 					background:#f9f9f9;
 					text-align:center;
