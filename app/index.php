@@ -723,7 +723,7 @@
 				}
 				/*@media (max-width:1000px) {*/
 					.table {
-						display:block;
+						/*display:block;*/
 					}
 					.td_idea,
 					.td_votes {
