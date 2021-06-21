@@ -858,6 +858,7 @@
 				</h2>
 				<?generateIdeaTable($thisMonthsTopIdeas);?>
 				<br/>
+				<br/>
 			<?}?>
 
 			<?if($thisWeeksTopIdeas) {?>
@@ -865,6 +866,7 @@
 					🎖 This week's top ideas
 				</h2>
 				<?generateIdeaTable($thisWeeksTopIdeas);?>
+				<br/>
 				<br/>
 			<?}?>
 
@@ -874,6 +876,7 @@
 				</h2>
 				<?generateIdeaTable($yesterdaysTopIdeas);?>
 				<br/>
+				<br/>
 			<?}?>
 
 			<?if($todaysTopIdeas) {?>
@@ -881,6 +884,7 @@
 					☀️ Today's top ideas
 				</h2>
 				<?generateIdeaTable($todaysTopIdeas);?>
+				<br/>
 				<br/>
 			<?}?>
 
@@ -898,6 +902,7 @@
 				💯 All-time top ideas
 			</h2>
 			<?generateIdeaTable($topIdeas);?>
+				<br/>
 			<br/>
 
 
@@ -908,6 +913,7 @@
 				🤔&nbsp; Latest ideas
 			</h2>
 			<?generateIdeaTable($latestIdeas);?>
+			<br/>
 			<br/>
 
 
