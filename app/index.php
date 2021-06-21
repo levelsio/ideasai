@@ -257,7 +257,7 @@
 								else {
 									/* return to center */
 									$('.center-idea-container .table').addClass('transition');
-									$('.center-idea-container .table').css('transform','translate3d(0px,0px,0px) rotate(-1deg)');
+									$('.center-idea-container .table').css('transform','translate3d(0px,0px,0px) rotate(0deg)');
 									setTimeout(function() {
 										$('.center-idea-container .table').removeClass('transition');
 									},125);
@@ -1825,7 +1825,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 		// </remove ideas w/ banned words>
 
 		foreach($ideas as $idea) {
-			?><div class="table" style="<?if($soloIdea){?>transform:rotate(-1deg);<?}?>margin:14px auto;"><?
+			?><div class="table" style="<?if($soloIdea){?>transform:rotate(0deg);<?}?>margin:14px auto;"><?
 
 				?><div id="id_<?=$idea['id']?>" class="tr container"><?
 					?><div class="td td_idea">
