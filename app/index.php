@@ -642,6 +642,7 @@
 					font-size:12px;
 				}
 				.center-idea-container {
+					min-height: calc(22vh + 100px + 200px);
 					padding:20vh;
 					padding-bottom:calc(22vh);
 				}
