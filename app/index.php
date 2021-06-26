@@ -145,6 +145,280 @@
 			<meta property="og:description" content="IdeasAI is an A.I. that generates business idea using GPT-3 by OpenAI" />
 			<meta property="og:url" content="https://ideasai.net<?=$_SERVER['REQUEST_URI']?>">
 			<meta name="twitter:url" content="https://ideasai.net<?=$_SERVER['REQUEST_URI']?>">
+
+			<style>
+				:root {
+					--input-border-color:#dddddd;
+					--box-shadow-central:0 0 0 1px var(--input-border-color), 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+				}
+
+				body,
+				input,
+				textarea {
+					font-family:-apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+				}
+				input.problem {
+					font-size:15px;
+				}
+				input,textarea,div.solution {
+					background:#fff;
+					box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
+					border:none;
+					margin:14px;
+					outline:none;
+					appearance:none;
+				}
+				div.solution {
+					font-size: 24px !important;
+    				font-weight: bold;
+    				color: #000;
+    				width:calc(100% - 14px - 14px - 14px);
+    				min-height:200px;
+    				margin-top:-7px;
+				}
+				button {
+					border:1px solid #ddd;
+					cursor:pointer;
+				}
+				button:hover {
+					opacity:0.75;
+				}
+				button:active {
+					opacity:0.5;
+				}
+				input,textarea,button,div.solution {
+					font-size:14px;
+					appearance:none;
+					padding:14px;
+					border-radius:5px;
+				}
+				html,body {
+					width: 100vw;
+					max-width: 100vw;
+					overflow-x: hidden;
+				}
+				body {
+					padding:14px;
+					background:#f9f9f9;
+					text-align:center;
+				}
+				.table {
+					box-shadow:var(--box-shadow-central);
+					box-shadow: 0 0 0 1px #f1eedc, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+					background:#fff;
+					border-radius:5px;
+					border-collapse:collapse;
+					width:100%;
+					max-width:400px;
+					max-width:300px;
+					margin-left: 14px !important;
+					margin-right: 14px !important;
+					display: inline-block;
+					vertical-align:top;
+					border-radius:12px;
+					background: #fff9c9;
+				}
+				p {
+					width:100%;
+					max-width:400px;
+					margin:14px auto;
+				}
+				.table .tr .td {
+					font-weight:bold;
+					padding:21px;
+				}
+				h2 {
+					max-width:400px;
+					width:100%;
+					text-align:center;
+					display:block;
+					margin:14px auto;
+				}
+
+				.action-upvote {
+					margin-top:1px;
+					margin-left:7px;
+				}
+				.action-upvote svg {
+					fill:#ff4742;
+					height:27px;
+				}
+				.action-downvote svg {
+					margin-right:7px;
+					height:35px;
+				}
+				.action-downvote.active svg,
+				.action-upvote.active svg {
+					transform: scale(1.75);
+					-webkit-transform: scale(1.75);
+					-ms-transform: scale(1.75);
+				}
+				.action-downvote:hover svg,
+				.action-upvote:hover svg {
+					transform: scale(1.2856);
+					-webkit-transform: scale(1.2856);
+					-ms-transform: scale(1.2856);
+				}
+				.action-upvote,
+				.action-downvote {
+					cursor:pointer;
+					display:inline-block;
+					vertical-align:middle;
+				}
+				tr .votes {
+					display:inline-block;
+					vertical-align:middle;
+				}
+
+				@media (min-width:600px) {
+					.action-upvote:active,
+					.action-downvote:active {
+						opacity:0.25;
+					}
+				}
+
+				a {
+					color:#000;
+				}
+				a:hover {
+					opacity:0.75;
+				}
+				a:active {
+					opacity:0.5;
+				}
+				.table .tr:hover .td {
+					/*background:#f9f9f9;*/
+				}
+				.time_ago {
+					opacity:0.5;
+					font-weight:600;
+					font-size:12px;
+				}
+				.center-idea-container {
+					min-height: calc(22vh + 100px + 200px);
+					padding:20vh;
+					padding-bottom:calc(22vh);
+				}
+				.center-idea-container .table.transition {
+					transition:transform 1s;
+					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+				}
+				.center-idea-container .table {
+					-webkit-touch-callout: none;
+					-webkit-user-select: none;
+					-khtml-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					user-select: none;
+					cursor: grab;
+				}
+				.center-idea-container .table:hover {
+					/*opacity: 0.75;*/
+				}
+				.center-idea-container .table:active,
+				.center-idea-container .table.active {
+					cursor: grabbing;
+					/*opacity: 0.5;*/
+				}
+				/*@media (max-height:1000px) {*/
+					.center-idea-container {
+						padding-top:10vh;
+						padding-bottom:calc(14vh + 100px);
+					}
+				/*}*/
+				/*@media (max-width:600px) {*/
+					.center-idea-container {
+						padding-top:0;
+						padding-left:0;
+						padding-right:0;
+						padding-bottom:calc(22vh + 100px);
+					}
+					p.text {
+						padding:14px;
+						width:calc(100% - 14px - 14px);
+					}
+				/*}*/
+				.center-idea-container .table {
+					border:none;
+					z-index: 2;
+				}
+				.button {
+					border:1px solid #000;
+					background:#000;
+					color:#fff;
+					font-weight:bold;
+					text-align:center;
+					padding:6px;
+					border-radius:5px;
+					display:inline-block;
+					cursor:pointer;
+					padding-top:13px;
+					padding-bottom:13px;
+				}
+				.button:hover {
+					background:none;
+					color:#000;
+				}
+				.button:active {
+					opacity:0.5;
+				}
+				.button.action-subscribe {
+					background: #fff;
+					color: #000;
+					border: 1px solid #000;
+				}
+				.button.action-subscribe:hover {
+					background: #000;
+					color: #fff;
+					border: 1px solid #fff;
+				}
+				input.email {
+					margin-bottom:0;
+					margin-top:-1px;
+					margin-left:14px;
+					appearance:none;
+					font-size:16px;
+					border:1px solid #ddd;
+					text-align:left;
+					padding:11px;
+					border-radius:5px;
+					display:inline-block;
+					box-shadow:var(--box-shadow-central);
+					border:none;
+				}
+				.td_votes {
+					width:140px;
+				}
+				.td_idea {
+					min-width: calc(100% - 14px - 14px - 14px);
+					text-align:left;
+				}
+				/*@media (max-width:1000px) {*/
+					.table {
+						/*display:block;*/
+					}
+					.td_idea,
+					.td_votes {
+						display:block;
+						text-align:center;
+						width:auto;
+					}
+					.table .tr .td.td_idea {
+						border:none;
+						padding-bottom:14px;
+					}
+					.table .tr .td.td_votes {
+						padding-top:0;
+						width:calc(100% - 14px - 14px - 14px);
+					}
+				/*}*/
+				.button.action-subscribe {
+					padding-top:6px;
+					padding-bottom:6px;
+				}
+			</style>
+
+
 			<script src="/assets/jquery.min.js??<?=filemtime(__DIR__.'/../assets/jquery.min.js')?>"></script>
 
 			<script>
@@ -519,278 +793,6 @@
 				by <a href="https://twitter.com/levelsio">@levelsio</a>
 			</p>
 			
-			<style>
-				:root {
-					--input-border-color:#dddddd;
-					--box-shadow-central:0 0 0 1px var(--input-border-color), 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
-				}
-
-				body,
-				input,
-				textarea {
-					font-family:-apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
-				}
-				input.problem {
-					font-size:15px;
-				}
-				input,textarea,div.solution {
-					background:#fff;
-					box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
-					border:none;
-					margin:14px;
-					outline:none;
-					appearance:none;
-				}
-				div.solution {
-					font-size: 24px !important;
-    				font-weight: bold;
-    				color: #000;
-    				width:calc(100% - 14px - 14px - 14px);
-    				min-height:200px;
-    				margin-top:-7px;
-				}
-				button {
-					border:1px solid #ddd;
-					cursor:pointer;
-				}
-				button:hover {
-					opacity:0.75;
-				}
-				button:active {
-					opacity:0.5;
-				}
-				input,textarea,button,div.solution {
-					font-size:14px;
-					appearance:none;
-					padding:14px;
-					border-radius:5px;
-				}
-				html,body {
-					width: 100vw;
-					max-width: 100vw;
-					overflow-x: hidden;
-				}
-				body {
-					padding:14px;
-					background:#f9f9f9;
-					text-align:center;
-				}
-				.table {
-					box-shadow:var(--box-shadow-central);
-					box-shadow: 0 0 0 1px #f1eedc, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
-					background:#fff;
-					border-radius:5px;
-					border-collapse:collapse;
-					width:100%;
-					max-width:400px;
-					max-width:300px;
-					margin-left: 14px !important;
-					margin-right: 14px !important;
-					display: inline-block;
-					vertical-align:top;
-					border-radius:12px;
-					background: #fff9c9;
-				}
-				p {
-					width:100%;
-					max-width:400px;
-					margin:14px auto;
-				}
-				.table .tr .td {
-					font-weight:bold;
-					padding:21px;
-				}
-				h2 {
-					max-width:400px;
-					width:100%;
-					text-align:center;
-					display:block;
-					margin:14px auto;
-				}
-
-				.action-upvote {
-					margin-top:1px;
-					margin-left:7px;
-				}
-				.action-upvote svg {
-					fill:#ff4742;
-					height:27px;
-				}
-				.action-downvote svg {
-					margin-right:7px;
-					height:35px;
-				}
-				.action-downvote.active svg,
-				.action-upvote.active svg {
-					transform: scale(1.75);
-					-webkit-transform: scale(1.75);
-					-ms-transform: scale(1.75);
-				}
-				.action-downvote:hover svg,
-				.action-upvote:hover svg {
-					transform: scale(1.2856);
-					-webkit-transform: scale(1.2856);
-					-ms-transform: scale(1.2856);
-				}
-				.action-upvote,
-				.action-downvote {
-					cursor:pointer;
-					display:inline-block;
-					vertical-align:middle;
-				}
-				tr .votes {
-					display:inline-block;
-					vertical-align:middle;
-				}
-
-				@media (min-width:600px) {
-					.action-upvote:active,
-					.action-downvote:active {
-						opacity:0.25;
-					}
-				}
-
-				a {
-					color:#000;
-				}
-				a:hover {
-					opacity:0.75;
-				}
-				a:active {
-					opacity:0.5;
-				}
-				.table .tr:hover .td {
-					/*background:#f9f9f9;*/
-				}
-				.time_ago {
-					opacity:0.5;
-					font-weight:600;
-					font-size:12px;
-				}
-				.center-idea-container {
-					min-height: calc(22vh + 100px + 200px);
-					padding:20vh;
-					padding-bottom:calc(22vh);
-				}
-				.center-idea-container .table.transition {
-					transition:transform 1s;
-					transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
-				}
-				.center-idea-container .table {
-					-webkit-touch-callout: none;
-					-webkit-user-select: none;
-					-khtml-user-select: none;
-					-moz-user-select: none;
-					-ms-user-select: none;
-					user-select: none;
-					cursor: grab;
-				}
-				.center-idea-container .table:hover {
-					/*opacity: 0.75;*/
-				}
-				.center-idea-container .table:active,
-				.center-idea-container .table.active {
-					cursor: grabbing;
-					/*opacity: 0.5;*/
-				}
-				/*@media (max-height:1000px) {*/
-					.center-idea-container {
-						padding-top:10vh;
-						padding-bottom:calc(14vh + 100px);
-					}
-				/*}*/
-				/*@media (max-width:600px) {*/
-					.center-idea-container {
-						padding-top:0;
-						padding-left:0;
-						padding-right:0;
-						padding-bottom:calc(22vh + 100px);
-					}
-					p.text {
-						padding:14px;
-						width:calc(100% - 14px - 14px);
-					}
-				/*}*/
-				.center-idea-container .table {
-					border:none;
-					z-index: 2;
-				}
-				.button {
-					border:1px solid #000;
-					background:#000;
-					color:#fff;
-					font-weight:bold;
-					text-align:center;
-					padding:6px;
-					border-radius:5px;
-					display:inline-block;
-					cursor:pointer;
-					padding-top:13px;
-					padding-bottom:13px;
-				}
-				.button:hover {
-					background:none;
-					color:#000;
-				}
-				.button:active {
-					opacity:0.5;
-				}
-				.button.action-subscribe {
-					background: #fff;
-					color: #000;
-					border: 1px solid #000;
-				}
-				.button.action-subscribe:hover {
-					background: #000;
-					color: #fff;
-					border: 1px solid #fff;
-				}
-				input.email {
-					margin-bottom:0;
-					margin-top:-1px;
-					margin-left:14px;
-					appearance:none;
-					font-size:16px;
-					border:1px solid #ddd;
-					text-align:left;
-					padding:11px;
-					border-radius:5px;
-					display:inline-block;
-					box-shadow:var(--box-shadow-central);
-					border:none;
-				}
-				.td_votes {
-					width:140px;
-				}
-				.td_idea {
-					min-width: calc(100% - 14px - 14px - 14px);
-					text-align:left;
-				}
-				/*@media (max-width:1000px) {*/
-					.table {
-						/*display:block;*/
-					}
-					.td_idea,
-					.td_votes {
-						display:block;
-						text-align:center;
-						width:auto;
-					}
-					.table .tr .td.td_idea {
-						border:none;
-						padding-bottom:14px;
-					}
-					.table .tr .td.td_votes {
-						padding-top:0;
-						width:calc(100% - 14px - 14px - 14px);
-					}
-				/*}*/
-				.button.action-subscribe {
-					padding-top:6px;
-					padding-bottom:6px;
-				}
-			</style>
-
 			<?if($frontpage){?>
 
 				<div class="center-idea-container">
