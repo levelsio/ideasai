@@ -39,6 +39,8 @@
 
 			// <tag page>
 				if($_GET['tag']) {
+					$_GET['tag']=str_replace('-',' ',$_GET['tag']);
+					
 					$tagPage=true;
 
 					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 AND idea LIKE :tag ORDER BY votes DESC");
