@@ -501,7 +501,7 @@
 				}
 			</script>
 			<br/>
-			<a href="/">
+			<a href="/" style="text-decoration:none;">
 				<h1>
 					💡 IdeasAI
 				</h1>
@@ -510,7 +510,7 @@
 
 			<p style="margin-top:-28px;">
 				<i>
-					<h2>
+					<h2 style="font-size:16px;margin:0 auto;">
 						GPT-3-powered business idea generator
 					</h2>
 				</i>
