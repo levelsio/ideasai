@@ -1052,7 +1052,6 @@
 								<?=capitalize($tag)?> Startup Ideas
 							</a><?
 						}
-						?>
 					?>
 				</div>
 			</footer>
