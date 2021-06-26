@@ -990,7 +990,7 @@
 					The idea (no pun intended) is to give you inspiration to make something cool, if you lack inspiration right now. Many ideas here might not be perfect but they might give you the spark to start thinking to get to a really good idea further on.
 				</p>
 				<p clas="text" style="text-align:left;line-height:1.8;">
-					Please ❤️ like ideas that you feel are promising and ✖ dislike ideas that are bad, too vague, too obvious, or already exist. Your ratings are fed back into OpenAI, so <strong>you (and others) are constantly training the model</strong> what good and bad ideas are which improves the next idea it comes up with.
+					Please ❤️ like ideas that you feel are promising and ✖ dislike ideas that are bad, too vague, too obvious, or already exist. Your likes/dislikes are fed back into OpenAI, so <strong>you (and others) are constantly training the model</strong> what good and bad ideas are which improves the next idea it comes up with.
 				</p>
 				<p clas="text" style="text-align:left;line-height:1.8;">
 					The A.I. never sleeps, so it's continously thinking of new ideas and when it comes up with a new one, it shows up here automatically (scroll down to New to see them come in). You can also subscribe to get a weekly list of the highest voted new ideas.
