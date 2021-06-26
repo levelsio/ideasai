@@ -501,12 +501,12 @@
 				}
 			</script>
 			<br/>
-			<h1>
-				💡 IdeasAI
-			</h1>
-			<a href="https://beta.openai.com/" target="_blank">
-				<img style="margin-top:-27px;margin-bottom:39px;margin-left:41.5px;" src="https://cdn.openai.com/API/logo-assets/powered-by-openai.svg" width="110" alt="Powered by OpenAI" />
+			<a href="/">
+				<h1>
+					💡 IdeasAI
+				</h1>
 			</a>
+			<img style="margin-top:-27px;margin-bottom:39px;margin-left:41.5px;" src="https://cdn.openai.com/API/logo-assets/powered-by-openai.svg" width="110" alt="Powered by OpenAI" />
 
 			<p style="margin-top:-28px;">
 				<i>
