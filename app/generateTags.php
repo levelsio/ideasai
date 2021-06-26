@@ -8,7 +8,7 @@
 	$allWords=array();
 
 	foreach($allIdeas as $idea) {
-		$idea=$idea['idea'];
+		$idea=str_replace('-',' ',makeUrlSlug($idea['idea']));
 		echo $idea;
 		echo "\n";
 		$words=explode(' ',$idea);
@@ -17,7 +17,12 @@
 		}
 	}
 
+	asort($allWords);
+	array_reverse($allWords);
+
 	print_r($allWords);
+
+
 
 	function loadDbs($dbs) {
 		try {
@@ -51,4 +56,27 @@
 		}
 	}
 
+	function makeUrlSlug($str, $replace=array(), $delimiter='-') {
+			// remove accents
+			$str=trim($str);
+			$str = removeAccents($str);
+			
+			if( !empty($replace) ) {
+				$str = str_replace((array)$replace, ' ', $str);
+			}
+
+			@$clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+			$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+			$clean = strtolower(trim($clean, '-'));
+			$clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
+
+			if(substr($clean,0,1)=='-') {
+				$clean=substr($clean,1,strlen($clean));
+			}
+			if(substr($clean,strlen($clean)-1,strlen($clean))=='-') {
+				$clean=substr($clean,0,strlen($clean)-1);
+			}
+
+			return $clean;
+		}
 ?>
