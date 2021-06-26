@@ -453,7 +453,7 @@
 						width:50%;
 					}
 				}
-				footer div.tag a:hover {
+				a.tag-link:hover {
 					text-decoration:underline;
 				}
 			</style>
