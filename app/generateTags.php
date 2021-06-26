@@ -4,7 +4,7 @@
 
 	loadDbs(array('gpt3ideas'));
 
-	$query=$gpt3ideas->prepare("SELECT idea FROM gpt3ideas");
+	$query=$gpt3ideasDb->prepare("SELECT idea FROM gpt3ideas");
 	$query->execute();
 	$allIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 	$allWords=array();
