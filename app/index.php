@@ -1004,8 +1004,6 @@
 				<br/>
 
 
-				<hr>
-
 				<style>
 					footer {
 						background: #fff;
@@ -1018,6 +1016,7 @@
 					.tag-container {
 						max-width: 1100px;
 	    				width: 100%;
+	    				margin: 0 auto;
 					}
 					.tag-link {
 					    text-align: left;
