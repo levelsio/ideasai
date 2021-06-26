@@ -1,7 +1,5 @@
 <?
 
-	require_once(__DIR__.'/../app/apiKeys.php');
-
 	loadDbs(array('gpt3ideas'));
 
 	$query=$gpt3ideasDb->prepare("SELECT idea FROM gpt3ideas");
@@ -10,6 +8,9 @@
 	$allWords=array();
 
 	foreach($allIdeas as $idea) {
+		$idea=$idea['idea'];
+		echo $idea;
+		echo "\n";
 		$words=explode(' ',$idea);
 		foreach($words as $word) {
 			$allWords[$word]++;
