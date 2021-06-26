@@ -1,5 +1,6 @@
 app/*.php
 !app/index.php
+!app/generateTags.php
 !app/recalculateVotes.php
 !app/removeDuplicateVotes.php
 
