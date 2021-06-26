@@ -996,7 +996,7 @@
 				<h2>
 					🤔&nbsp; Latest ideas related to <?=capitalize($_GET['tag'])?>
 				</h2>
-				<?generateIdeaTable($topIdeas);?>
+				<?generateIdeaTable($topIdeas,false);?>
 				<br/>
 				<br/>
 
