@@ -39,14 +39,19 @@
 
 			// <tag page>
 				if($_GET['tag']) {
+					$tagPage=true;
+
 					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 AND idea LIKE :tag ORDER BY votes DESC LIMIT 100");
 					$query->bindValue(':tag','%'.$_GET['tag'].'%');
 					$query->execute();
-					$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
+					$topIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+					
 				}
 			// </tag page>
 			// <front page>
 				else if(!$_GET['tag']) {
+					$frontpage=true;
+
 					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY votes DESC,epoch_created DESC");
 					$query->execute();
 					$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
@@ -78,37 +83,34 @@
 						$topIdeas=$newTopIdeas;
 					// </sort top ideas by votes and time>
 
-
 					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 					$query->execute();
 					$todaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
-
 
 					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-48 hours")." AND epoch_created<".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 					$query->execute();
 					$yesterdaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
-
 					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-7 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 					$query->execute();
 					$thisWeeksTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
-
 					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 					$query->execute();
 					$thisMonthsTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
-
-
-
-					$query=$emailsDb->prepare("SELECT COUNT(*) FROM emails");
-					$query->execute();
-					$emailCount=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)'];
 
 					// <center idea>
 						$randomIdea=getRandomIdea();
 					// </center idea>
 				}
 			// </front page>
+
+
+
+
+			$query=$emailsDb->prepare("SELECT COUNT(*) FROM emails");
+			$query->execute();
+			$emailCount=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)'];
 
 
 			?>
@@ -777,14 +779,18 @@
 				}
 			</style>
 
-			<div class="center-idea-container">
-				<?generateIdeaTable($randomIdea,true,'random');?>
+			<?if($frontpage){?>
 
-				<p style="font-size:14px;" class="how-to-use-guide">
-					✖ Swipe left, or your left arrow key to dislike<br/>
-					❤️ Swipe right, or your right arrow key to like
-				</p>
-			</div>
+				<div class="center-idea-container">
+					<?generateIdeaTable($randomIdea,true,'random');?>
+
+					<p style="font-size:14px;" class="how-to-use-guide">
+						✖ Swipe left, or your left arrow key to dislike<br/>
+						❤️ Swipe right, or your right arrow key to like
+					</p>
+				</div>
+
+			<?}?>
 
 
 			<?if(!$_COOKIE['ideasai_subscribed']){?>
@@ -872,147 +878,131 @@
 			<br/>
 
 
+			<?if($frontpage){?>
 
-			<?if($thisMonthsTopIdeas) {?>
+				<?if($thisMonthsTopIdeas) {?>
+					<h2>
+						🏆 This month's top ideas
+					</h2>
+					<?generateIdeaTable($thisMonthsTopIdeas);?>
+					<br/>
+					<br/>
+				<?}?>
+
+				<?if($thisWeeksTopIdeas) {?>
+					<h2>
+						🎖 This week's top ideas
+					</h2>
+					<?generateIdeaTable($thisWeeksTopIdeas);?>
+					<br/>
+					<br/>
+				<?}?>
+
+				<?if($yesterdaysTopIdeas) {?>
+					<h2>
+						🏅 Yesterday's top ideas
+					</h2>
+					<?generateIdeaTable($yesterdaysTopIdeas);?>
+					<br/>
+					<br/>
+				<?}?>
+
+				<?if($todaysTopIdeas) {?>
+					<h2>
+						☀️ Today's top ideas
+					</h2>
+					<?generateIdeaTable($todaysTopIdeas);?>
+					<br/>
+					<br/>
+				<?}?>
+
+
 				<h2>
-					🏆 This month's top ideas
+					🤔&nbsp; New ideas just in
 				</h2>
-				<?generateIdeaTable($thisMonthsTopIdeas);?>
+				<?generateIdeaTable($newIdeas);?>
 				<br/>
-				<br/>
-			<?}?>
 
-			<?if($thisWeeksTopIdeas) {?>
+
+
+
 				<h2>
-					🎖 This week's top ideas
+					💯 All-time top ideas
 				</h2>
-				<?generateIdeaTable($thisWeeksTopIdeas);?>
+				<?generateIdeaTable($topIdeas);?>
 				<br/>
 				<br/>
-			<?}?>
 
-			<?if($yesterdaysTopIdeas) {?>
+
+
+
+
 				<h2>
-					🏅 Yesterday's top ideas
+					🤔&nbsp; Latest ideas
 				</h2>
-				<?generateIdeaTable($yesterdaysTopIdeas);?>
+				<?generateIdeaTable($latestIdeas);?>
 				<br/>
 				<br/>
-			<?}?>
-
-			<?if($todaysTopIdeas) {?>
-				<h2>
-					☀️ Today's top ideas
-				</h2>
-				<?generateIdeaTable($todaysTopIdeas);?>
-				<br/>
-				<br/>
-			<?}?>
 
 
-			<h2>
-				🤔&nbsp; New ideas just in
-			</h2>
-			<?generateIdeaTable($newIdeas);?>
-			<br/>
+				<a name="readme"></a>
 
-
-
-
-			<h2>
-				💯 All-time top ideas
-			</h2>
-			<?generateIdeaTable($topIdeas);?>
-				<br/>
-			<br/>
-
-
-
-
-
-			<h2>
-				🤔&nbsp; Latest ideas
-			</h2>
-			<?generateIdeaTable($latestIdeas);?>
-			<br/>
-			<br/>
-
-
-			<a name="readme"></a>
-
-			<p clas="text" style="text-align:left;line-height:1.8;">
-				The idea (no pun intended) is to give you inspiration to make something cool, if you lack inspiration right now. Many ideas here might not be perfect but they might give you the spark to start thinking to get to a really good idea further on.
-			</p>
-			<p clas="text" style="text-align:left;line-height:1.8;">
-				Please ❤️ like ideas that you feel are promising and ❌ dislike ideas that are bad, too vague, too obvious, or already exist. Your ratings are fed back into OpenAI, so <strong>you (and others) are constantly training the model</strong> what good and bad ideas are which improves the next idea it comes up with.
-			</p>
-			<p clas="text" style="text-align:left;line-height:1.8;">
-				The A.I. never sleeps, so it's continously thinking of new ideas and when it comes up with a new one, it shows up here automatically (scroll down to New to see them come in). You can also subscribe to get a weekly list of the highest voted new ideas.
-			</p>
-			<p clas="text" style="text-align:left;line-height:1.8;">
-				IdeasAI generated <?
-					$query=$gpt3ideasDb->prepare("SELECT COUNT(*) FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND human_seeded IS NOT 1");
-					$query->execute();
-					$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/30.5;
-
-					if($ideasInLastH<10) {
-						$query=$gpt3ideasDb->prepare("SELECT COUNT(*) FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND human_seeded IS NOT 1");
+				<p clas="text" style="text-align:left;line-height:1.8;">
+					The idea (no pun intended) is to give you inspiration to make something cool, if you lack inspiration right now. Many ideas here might not be perfect but they might give you the spark to start thinking to get to a really good idea further on.
+				</p>
+				<p clas="text" style="text-align:left;line-height:1.8;">
+					Please ❤️ like ideas that you feel are promising and ❌ dislike ideas that are bad, too vague, too obvious, or already exist. Your ratings are fed back into OpenAI, so <strong>you (and others) are constantly training the model</strong> what good and bad ideas are which improves the next idea it comes up with.
+				</p>
+				<p clas="text" style="text-align:left;line-height:1.8;">
+					The A.I. never sleeps, so it's continously thinking of new ideas and when it comes up with a new one, it shows up here automatically (scroll down to New to see them come in). You can also subscribe to get a weekly list of the highest voted new ideas.
+				</p>
+				<p clas="text" style="text-align:left;line-height:1.8;">
+					IdeasAI generated <?
+						$query=$gpt3ideasDb->prepare("SELECT COUNT(*) FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND human_seeded IS NOT 1");
 						$query->execute();
-						$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/24;
-					}
-				echo number_format($ideasInLastH);
-				?> ideas today and <br/>
-				<?=number_format(count($ideas))?> ideas so far.
-			</p>
-			<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
-				<strong>
-					If you'd like to advertise on this page and the <?=number_format($emailCount)?>-subscriber weekly idea mail, <a href="https://twitter.com/levelsio">tweet me</a>!
-				</strong>
-			</div>
+						$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/30.5;
+
+						if($ideasInLastH<10) {
+							$query=$gpt3ideasDb->prepare("SELECT COUNT(*) FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND human_seeded IS NOT 1");
+							$query->execute();
+							$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/24;
+						}
+					echo number_format($ideasInLastH);
+					?> ideas today and <br/>
+					<?=number_format(count($ideas))?> ideas so far.
+				</p>
+				<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
+					<strong>
+						If you'd like to advertise on this page and the <?=number_format($emailCount)?>-subscriber weekly idea mail, <a href="https://twitter.com/levelsio">tweet me</a>!
+					</strong>
+				</div>
 
 
-			<br/>
-			<br/>
+				<br/>
+				<br/>
 
-			<br/>
-			<br/>
+				<br/>
+				<br/>
 
-			<br/>
-			<br/>
+				<br/>
+				<br/>
 
-			<br/>
-			<br/>
+				<br/>
+				<br/>
+			<?}?>
+
+			<?if($tagPage) {?>
+
+				<h2>
+					🤔&nbsp; Latest ideas related to <?=capitalize($_GET['tag'])?>
+				</h2>
+				<?generateIdeaTable($topIdeas);?>
+				<br/>
+				<br/>
+
+			<?}?>
 
 
-
-
-			<script src="https://js.stripe.com/v3"></script>
-			<script>
-				var stripe = Stripe('pk_live_51HAH3RLuI4dqzJZCcpn0kvwkOjQIu2frZrGvKVwdrz3Rim1W7LvsgUEmA6q2Kn0hDyMFy6zzK2jFLiM5d4nw1lbS00QW5ZI0Yq');
-				$(function() {
-					$('.claim-idea').bind('click',function() {
-						stripe.redirectToCheckout({
-							lineItems: [{price: 'price_1HNJGwLuI4dqzJZCGAekSbFG', quantity: 1}],
-							mode: 'payment',
-							// Do not rely on the redirect to the successUrl for fulfilling
-							// purchases, customers may not always reach the success_url after
-							// a successful payment.
-							// Instead use one of the strategies described in
-							// https://stripe.com/docs/payments/checkout/fulfillment
-							successUrl: 'https://ideasai.net',
-							cancelUrl: 'https://ideasai.net',
-						})
-						.then(function (result) {
-							if (result.error) {
-								// If `redirectToCheckout` fails due to a browser or network
-								// error, display the localized error message to your customer.
-								var displayError = document.getElementById('error-message');
-								displayError.textContent = result.error.message;
-							}
-						});
-					});
-				});
-			</script>
 
 			<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 			<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
@@ -2194,5 +2184,32 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 		global $config;
 		if(stripos($message,'❌')!==false) file_put_contents('/srv/lastAdminTelegramTimestamp.txt',time()."\n".$message);
 		file_get_contents('https://api.telegram.org/bot'.$config['telegramAdminChat']['bot_token'].'/sendMessage?chat_id='.$config['telegramAdminChat']['chat_id'].'&text='.urlencode($message).'&disable_web_page_preview=true');
+	}
+
+	function capitalize($title) {
+		$smallwordsarray = array(
+		'of','a','the','and','an','or','nor','but','is','if',
+		'at','by','on','off','for','in','out','over','to'
+		);
+		$bigwordsarray = array('usd','eur','gbp','aqi','oecd','lgbt','lgbtq','edm','utc');
+
+		// Split the string into separate words
+		$words = explode(' ', $title);
+
+		foreach ($words as $key => $word) {
+			// If this word is the first, or it's not one of our small words, capitalise it
+			// with ucwords().
+			if(strlen($word)>4 && strtoupper($word)==$word) $word=strtolower($word);
+			if ($key == 0 or !in_array($word, $smallwordsarray))
+			$words[$key] = ucwords($word);
+			if (in_array(strtolower($word), $bigwordsarray)) {
+				$words[$key] = strtoupper($word);
+			}
+		}
+		
+		// Join the words back into a string
+		$newtitle = implode(' ', $words);
+
+		return $newtitle;
 	}
 ?>
