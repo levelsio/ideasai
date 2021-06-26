@@ -34,82 +34,81 @@
 	// </set uid to track votes>
 
 
-	// <tag page>
-		if($_GET['tag']) {
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 AND idea LIKE :tag ORDER BY votes DESC LIMIT 100");
-			$query->bindValue(':tag','%'.$_GET['tag'].'%');
-			$query->execute();
-			$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
 
-			echo json_encode($ideas);
-			exit;
-		}
-	// </tag page>
-
-
-	// <front page>
 		if(empty($_GET['action']) && php_sapi_name()!='cli') {
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY votes DESC,epoch_created DESC");
-			$query->execute();
-			$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
 
-			$query=$gpt3ideasDb->prepare("SELECT epoch_created FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created ASC LIMIT 1");
-			$query->execute();
-			$oldestIdea=$query->fetchAll(PDO::FETCH_ASSOC)[0];
-
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 12");
-			$query->execute();
-			$newIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
-
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 120");
-			$query->execute();
-			$latestIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
-
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE votes>=2 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 30");
-			$query->execute();
-			$topIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
-
-			// <sort top ideas by votes and time>
-				$newTopIdeas=array();
-				foreach($topIdeas as $idea) {
-					$ageInHours = (time()-$idea['epoch_created'])/60/60;
-					$idea['rank'] = pow(($idea['votes'] - 1) / ($ageInHours + 2),1.5);
-					array_push($newTopIdeas,$idea);
+			// <tag page>
+				if($_GET['tag']) {
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 AND idea LIKE :tag ORDER BY votes DESC LIMIT 100");
+					$query->bindValue(':tag','%'.$_GET['tag'].'%');
+					$query->execute();
+					$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
 				}
-				sortBySubkeyFast($newTopIdeas,'rank',false);
-				$topIdeas=$newTopIdeas;
-			// </sort top ideas by votes and time>
+			// </tag page>
+			// <front page>
+				else if(!$_GET['tag']) {
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY votes DESC,epoch_created DESC");
+					$query->execute();
+					$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
+
+					$query=$gpt3ideasDb->prepare("SELECT epoch_created FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created ASC LIMIT 1");
+					$query->execute();
+					$oldestIdea=$query->fetchAll(PDO::FETCH_ASSOC)[0];
+
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 12");
+					$query->execute();
+					$newIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 120");
+					$query->execute();
+					$latestIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE votes>=2 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 30");
+					$query->execute();
+					$topIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+
+					// <sort top ideas by votes and time>
+						$newTopIdeas=array();
+						foreach($topIdeas as $idea) {
+							$ageInHours = (time()-$idea['epoch_created'])/60/60;
+							$idea['rank'] = pow(($idea['votes'] - 1) / ($ageInHours + 2),1.5);
+							array_push($newTopIdeas,$idea);
+						}
+						sortBySubkeyFast($newTopIdeas,'rank',false);
+						$topIdeas=$newTopIdeas;
+					// </sort top ideas by votes and time>
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
-			$query->execute();
-			$todaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+					$query->execute();
+					$todaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-48 hours")." AND epoch_created<".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
-			$query->execute();
-			$yesterdaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-48 hours")." AND epoch_created<".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+					$query->execute();
+					$yesterdaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-7 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
-			$query->execute();
-			$thisWeeksTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-7 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+					$query->execute();
+					$thisWeeksTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
-			$query->execute();
-			$thisMonthsTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+					$query->execute();
+					$thisMonthsTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-			$query=$emailsDb->prepare("SELECT COUNT(*) FROM emails");
-			$query->execute();
-			$emailCount=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)'];
+					$query=$emailsDb->prepare("SELECT COUNT(*) FROM emails");
+					$query->execute();
+					$emailCount=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)'];
 
-			// <center idea>
-				$randomIdea=getRandomIdea();
-			// </center idea>
-
+					// <center idea>
+						$randomIdea=getRandomIdea();
+					// </center idea>
+				}
+			// </front page>
 
 
 			?>
