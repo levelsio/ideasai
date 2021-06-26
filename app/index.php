@@ -280,10 +280,12 @@
 				a {
 					color:#000;
 				}
-				a:hover {
+				a:hover,
+				a:hover h1 {
 					opacity:0.75;
 				}
-				a:active {
+				a:active,
+				a:active h1 {
 					opacity:0.5;
 				}
 				.table .tr:hover .td {
