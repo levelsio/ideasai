@@ -29,7 +29,12 @@
 		array_push($tags,$word);
 	}
 
-	echo json_encode($tags);
+	echo "\n";
+	echo "Generated ".count($tags)." tags with >50 ideas per tag";
+	echo "\n";
+	// echo json_encode($tags);
+
+	file_put_contents(__DIR__.'/tags.json',json_encode($tags));
 
 
 
