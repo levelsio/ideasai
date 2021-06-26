@@ -1,6 +1,6 @@
 <?
 	
-	$mostCommonEnglishWords=array('startup','helps','companies','help','idea','tool','manage','businesses','wants','more','has','allows','are','provides','customers','products','employees','services','where','thats','easier','currently','makes','share','aims','better','helping','is','the','be','to','of','and','a','in','that','have','i','it','for','not','on','with','he','as','you','do','at','this','but','his','by','from','they','we','say','her','she','or','an','will','my','one','all','would','there','their','what','so','up','out','if','about','who','get','which','go','me','when','make','can','like','time','no','just','him','know','take','people','into','year','your','good','some','could','them','see','other','than','then','now','look','only','come','its','over','think','also','back','after','use','two','how','our','work','first','well','way','even','new','want','because','any','these','give','day','most','us','follow','building','create','track','own','real','buy','looking','using','theyre','raised','managing','already','allowing','connect','without','need','learning','built','single','via','paid','automatically','between');
+	$avoidWords=array('startup','helps','companies','help','idea','tool','manage','businesses','wants','more','has','allows','are','provides','customers','products','employees','services','where','thats','easier','currently','makes','share','aims','better','helping','is','the','be','to','of','and','a','in','that','have','i','it','for','not','on','with','he','as','you','do','at','this','but','his','by','from','they','we','say','her','she','or','an','will','my','one','all','would','there','their','what','so','up','out','if','about','who','get','which','go','me','when','make','can','like','time','no','just','him','know','take','people','into','year','your','good','some','could','them','see','other','than','then','now','look','only','come','its','over','think','also','back','after','use','two','how','our','work','first','well','way','even','new','want','because','any','these','give','day','most','us','follow','building','create','track','own','real','buy','looking','using','theyre','raised','managing','already','allowing','connect','without','need','learning','built','single','via','paid','automatically','between');
 
 	loadDbs(array('gpt3ideas'));
 
@@ -15,7 +15,7 @@
 		foreach($words as $word) {
 			if(substr($word,-1)=='s') continue; /* remove plurs and verbs like Engineers Startup Ideas and Allows Startup Ideas */
 			if(is_numeric($word)) continue;
-			if(in_array($word,$mostCommonEnglishWords)) continue;
+			if(in_array($word,$avoidWords)) continue;
 			$allWords[$word]++;
 		}
 	}
