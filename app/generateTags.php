@@ -26,7 +26,7 @@
 
 	foreach($allWords as $word => $ideasCount) {
 		if($ideasCount<50) continue;
-		array_push($tags,$tag);
+		array_push($tags,$word);
 	}
 
 	echo json_encode($tags);
