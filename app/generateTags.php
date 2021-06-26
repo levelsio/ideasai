@@ -17,6 +17,10 @@
 
 	asort($allWords);
 
+	$allWords=array_reverse($allWords);
+
+	array_slice($allWords,0,100);
+	
 	print_r($allWords);
 
 
