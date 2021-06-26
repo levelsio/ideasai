@@ -26,12 +26,12 @@
 	$tags=array();
 
 	foreach($allWords as $word => $ideasCount) {
-		if($ideasCount<50) continue;
+		if($ideasCount<25) continue;
 		array_push($tags,$word);
 	}
 
 	echo "\n";
-	echo "Generated ".count($tags)." tags with >50 ideas per tag";
+	echo "Generated ".count($tags)." tags with >25 ideas per tag";
 	echo "\n";
 	// echo json_encode($tags);
 
