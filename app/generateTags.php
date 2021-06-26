@@ -18,7 +18,6 @@
 	}
 
 	asort($allWords);
-	array_reverse($allWords);
 
 	print_r($allWords);
 
