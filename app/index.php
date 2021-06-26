@@ -1028,21 +1028,6 @@
 						text-overflow: ellipsis;
 					}
 				</style>
-				<footer>
-					<div class="tag-container">
-						<?
-							$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
-
-							foreach($tags as $tag) {
-								?><a class="tag-link" alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
-									<?=capitalize($tag)?> Startup Ideas
-								</a><?
-							}
-							?>
-						?>
-					</div>
-				</footer>
-
 
 				<br/>
 				<br/>
@@ -1071,6 +1056,34 @@
 
 			<?}?>
 
+
+			<footer>
+				<div class="tag-container">
+					<?
+						$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
+
+						foreach($tags as $tag) {
+							?><a class="tag-link" alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
+								<?=capitalize($tag)?> Startup Ideas
+							</a><?
+						}
+						?>
+					?>
+				</div>
+			</footer>
+			
+
+			<br/>
+			<br/>
+
+			<br/>
+			<br/>
+
+			<br/>
+			<br/>
+
+			<br/>
+			<br/>
 
 
 			<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
