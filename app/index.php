@@ -441,6 +441,20 @@
 					overflow: hidden;
 					white-space: nowrap;
 					text-overflow: ellipsis;
+					text-decoration:none;
+				}
+				@media (max-width:1000px) {
+					.tag-link {
+						width:33.333%;
+					}
+				}
+				@media (max-width:600px) {
+					.tag-link {
+						width:50%;
+					}
+				}
+				footer div.tag a:hover {
+					text-decoration:underline;
 				}
 			</style>
 
