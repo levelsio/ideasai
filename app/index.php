@@ -41,7 +41,7 @@
 				if($_GET['tag']) {
 					$tagPage=true;
 
-					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 AND idea LIKE :tag ORDER BY votes DESC LIMIT 100");
+					$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 AND idea LIKE :tag ORDER BY votes DESC");
 					$query->bindValue(':tag','%'.$_GET['tag'].'%');
 					$query->execute();
 					$topIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
