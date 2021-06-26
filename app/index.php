@@ -211,7 +211,7 @@
 					border-collapse:collapse;
 					width:100%;
 					max-width:400px;
-					max-width:300px;
+					max-width:350px;
 					margin-left: 14px !important;
 					margin-right: 14px !important;
 					display: inline-block;
