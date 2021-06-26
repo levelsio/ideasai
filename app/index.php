@@ -1001,6 +1001,22 @@
 
 				<br/>
 				<br/>
+
+
+				<hr>
+
+				<?
+					$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
+
+					foreach($tags as $tag) {
+						?><a href="/<?=$tag?>-startup-ideas">
+							<?=capitalize($tag)?> Startup Ideas
+						</a><?
+					}
+					?>
+
+				?>
+
 			<?}?>
 
 			<?if($tagPage) {?>
