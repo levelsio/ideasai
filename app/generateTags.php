@@ -9,8 +9,6 @@
 
 	foreach($allIdeas as $idea) {
 		$idea=str_replace('-',' ',makeUrlSlug($idea['idea']));
-		echo $idea;
-		echo "\n";
 		$words=explode(' ',$idea);
 		foreach($words as $word) {
 			$allWords[$word]++;
