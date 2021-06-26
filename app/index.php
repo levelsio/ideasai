@@ -416,6 +416,29 @@
 					padding-top:6px;
 					padding-bottom:6px;
 				}
+				
+				footer {
+					background: #fff;
+					border-top: 1px solid #ddd;
+					padding-top: 100px;
+					margin: 0;
+					padding: 28px;
+					padding-bottom: 56px;
+				}
+				.tag-container {
+					max-width: 1100px;
+    				width: 100%;
+    				margin: 0 auto;
+				}
+				.tag-link {
+				    text-align: left;
+					font-size: 14px;
+					display: inline-block;
+					width: 25%;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
 			</style>
 
 
@@ -990,44 +1013,6 @@
 					</strong>
 				</div>
 
-
-				<br/>
-				<br/>
-
-				<br/>
-				<br/>
-
-				<br/>
-				<br/>
-
-				<br/>
-				<br/>
-
-
-				<style>
-					footer {
-						background: #fff;
-						border-top: 1px solid #ddd;
-						padding-top: 100px;
-						margin: 0;
-						padding: 28px;
-						padding-bottom: 56px;
-					}
-					.tag-container {
-						max-width: 1100px;
-	    				width: 100%;
-	    				margin: 0 auto;
-					}
-					.tag-link {
-					    text-align: left;
-						font-size: 14px;
-						display: inline-block;
-						width: 25%;
-						overflow: hidden;
-						white-space: nowrap;
-						text-overflow: ellipsis;
-					}
-				</style>
 
 				<br/>
 				<br/>
