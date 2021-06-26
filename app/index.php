@@ -1056,20 +1056,21 @@
 						}
 					?>
 				</div>
+
+				<br/>
+				<br/>
+
+				<br/>
+				<br/>
+
+				<br/>
+				<br/>
+
+				<br/>
+				<br/>
+				
 			</footer>
 			
-
-			<br/>
-			<br/>
-
-			<br/>
-			<br/>
-
-			<br/>
-			<br/>
-
-			<br/>
-			<br/>
 
 
 			<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
