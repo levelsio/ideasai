@@ -13,6 +13,7 @@
 		$idea=str_replace('-',' ',makeUrlSlug($idea['idea']));
 		$words=explode(' ',$idea);
 		foreach($words as $word) {
+			if(substr($word,-1)=='s') continue; /* remove plurs and verbs like Engineers Startup Ideas and Allows Startup Ideas */
 			if(in_array($word,$mostCommonEnglishWords)) continue;
 			$allWords[$word]++;
 		}
