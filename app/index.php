@@ -980,8 +980,7 @@
 							$ideasInLastH=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)']/24;
 						}
 					echo number_format($ideasInLastH);
-					?> ideas today and <br/>
-					<?=number_format(count($ideas))?> ideas so far.
+					?> ideas today and <?=number_format(count($ideas))?> ideas so far.
 				</p>
 				<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
 					<strong>
