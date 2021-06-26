@@ -34,25 +34,38 @@
 	// </set uid to track votes>
 
 
-	// <front page>
-		if(empty($_GET['action']) && php_sapi_name()!='cli') {
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY votes DESC,epoch_created DESC");
+	// <tag page>
+		if($_GET['tag']) {
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 AND tag LIKE :tag ORDER BY votes DESC,epoch_created DESC LIMIT 100");
+			$query->bindValue(':tag','%'.$_GET['tag'].'%');
 			$query->execute();
 			$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
 
-			$query=$gpt3ideasDb->prepare("SELECT epoch_created FROM gpt3ideas WHERE claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY epoch_created ASC LIMIT 1");
+			echo json_encode($ideas);
+			exit;
+		}
+	// </tag page>
+
+
+	// <front page>
+		if(empty($_GET['action']) && php_sapi_name()!='cli') {
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY votes DESC,epoch_created DESC");
+			$query->execute();
+			$ideas=$query->fetchAll(PDO::FETCH_ASSOC);
+
+			$query=$gpt3ideasDb->prepare("SELECT epoch_created FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created ASC LIMIT 1");
 			$query->execute();
 			$oldestIdea=$query->fetchAll(PDO::FETCH_ASSOC)[0];
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 12");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 12");
 			$query->execute();
 			$newIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 120");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 120");
 			$query->execute();
 			$latestIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE votes>=2 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 30");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE votes>=2 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 30");
 			$query->execute();
 			$topIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -68,22 +81,22 @@
 			// </sort top ideas by votes and time>
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND votes>=1 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 			$query->execute();
 			$todaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-48 hours")." AND epoch_created<".strtotime("-24 hours")." AND votes>=1 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-48 hours")." AND epoch_created<".strtotime("-24 hours")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 			$query->execute();
 			$yesterdaysTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-7 days")." AND votes>=1 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-7 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 			$query->execute();
 			$thisWeeksTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND votes>=1 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-31 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 12");
 			$query->execute();
 			$thisMonthsTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -1119,7 +1132,7 @@ https://ideasai.net/?action=confirm_email&email=".urlencode($_GET['email'])."&ha
 			$query->execute();
 			$emailsToSend=$query->fetchAll(PDO::FETCH_ASSOC);
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-7 days")." AND votes>=1 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 25");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE epoch_created>".strtotime("-7 days")." AND votes>=1 AND human_seeded IS NOT 1 ORDER BY votes DESC LIMIT 25");
 			$query->execute();
 			$thisWeeksTopIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 			$weeklyTopIdeasList='';
@@ -1132,7 +1145,7 @@ https://ideasai.net/?action=confirm_email&email=".urlencode($_GET['email'])."&ha
 				$i++;
 			}
 
-			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 12");
+			$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 12");
 			$query->execute();
 			$newIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
 			$newIdeasList='';
@@ -1452,14 +1465,14 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 						}
 
 						if($_GET['new_idea']=='good') {
-							$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND claimed IS NOT 1 AND human_seeded IS NOT 1 AND votes>=4 ORDER BY RANDOM() ASC LIMIT 1");
+							$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND human_seeded IS NOT 1 AND votes>=4 ORDER BY RANDOM() ASC LIMIT 1");
 							$query->bindValue(':id',$_GET['id']);
 							$query->execute();
 							$idea=$query->fetchAll(PDO::FETCH_ASSOC);
 						}
 
 						if($_GET['new_idea']=='new') {
-							$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND votes=0 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 1");
+							$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND votes=0 AND human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 1");
 							$query->bindValue(':id',$_GET['id']);
 							$query->execute();
 							$idea=$query->fetchAll(PDO::FETCH_ASSOC);
@@ -1553,21 +1566,21 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 			// <get new idea to dynamically replace idea with>
 				if($_GET['new_idea']) {
 					if($_GET['new_idea']=='random') {
-						$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND claimed IS NOT 1 AND human_seeded IS NOT 1 AND votes>=0 ORDER BY RANDOM() ASC LIMIT 1");
+						$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND human_seeded IS NOT 1 AND votes>=0 ORDER BY RANDOM() ASC LIMIT 1");
 						$query->bindValue(':id',$_GET['id']);
 						$query->execute();
 						$idea=$query->fetchAll(PDO::FETCH_ASSOC)[0];
 					}
 
 					if($_GET['new_idea']=='good') {
-						$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND claimed IS NOT 1 AND human_seeded IS NOT 1 AND votes>=4 ORDER BY RANDOM() ASC LIMIT 1");
+						$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND human_seeded IS NOT 1 AND votes>=4 ORDER BY RANDOM() ASC LIMIT 1");
 						$query->bindValue(':id',$_GET['id']);
 						$query->execute();
 						$idea=$query->fetchAll(PDO::FETCH_ASSOC)[0];
 					}
 
 					if($_GET['new_idea']=='new') {
-						$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND votes=0 AND claimed IS NOT 1 AND human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 1");
+						$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND votes=0 AND human_seeded IS NOT 1 ORDER BY epoch_created DESC LIMIT 1");
 						$query->bindValue(':id',$_GET['id']);
 						$query->execute();
 						$idea=$query->fetchAll(PDO::FETCH_ASSOC)[0];
@@ -1620,7 +1633,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 
 			// <get good ideas>
 				// $query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE launch_hn IS NOT 1 AND (human_seeded=1 OR votes>=20) ORDER BY RANDOM() DESC LIMIT 20");
-				$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE launch_hn IS NOT 1 AND (claimed IS NOT 1 AND human_seeded=1) ORDER BY RANDOM() DESC LIMIT 20");
+				$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE launch_hn IS NOT 1 AND (human_seeded=1) ORDER BY RANDOM() DESC LIMIT 20");
 				// // $query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE votes>=10 ORDER BY votes DESC LIMIT 12");
 				$query->execute();
 				$goodIdeas=$query->fetchAll(PDO::FETCH_ASSOC);
@@ -1987,7 +2000,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 			}
 			else {
 				// show random idea
-				$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND claimed IS NOT 1 AND human_seeded IS NOT 1 AND votes>=0 ORDER BY RANDOM() ASC LIMIT 1");
+				$query=$gpt3ideasDb->prepare("SELECT * FROM gpt3ideas WHERE id IS NOT :id AND human_seeded IS NOT 1 AND votes>=0 ORDER BY RANDOM() ASC LIMIT 1");
 				$query->bindValue(':id',$_GET['id']);
 				$query->execute();
 				$randomIdea=$query->fetchAll(PDO::FETCH_ASSOC);
