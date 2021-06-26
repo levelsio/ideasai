@@ -510,9 +510,9 @@
 
 			<p style="margin-top:-28px;">
 				<i>
-					<strong>
+					<h2>
 						GPT-3-powered business idea generator
-					</strong>
+					</h2>
 				</i>
 			</p>
 			<p style="margin-bottom:28px;">
