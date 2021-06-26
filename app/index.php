@@ -1008,7 +1008,7 @@
 					$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
 
 					foreach($tags as $tag) {
-						?><a href="/<?=$tag?>-startup-ideas">
+						?><a alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
 							<?=capitalize($tag)?> Startup Ideas
 						</a>&nbsp;<?
 					}
