@@ -1006,17 +1006,33 @@
 
 				<hr>
 
-				<?
-					$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
-
-					foreach($tags as $tag) {
-						?><a alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
-							<?=capitalize($tag)?> Startup Ideas
-						</a>&nbsp;<?
+				<style>
+					.tag-container {
+						max-width: 1100px;
+	    				width: 100%;
 					}
-					?>
+					.tag-link {
+					    text-align: left;
+						font-size: 14px;
+						display: inline-block;
+						width: 25%;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+					}
+				</style>
+				<div class="tag-container">
+					<?
+						$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
 
-				?>
+						foreach($tags as $tag) {
+							?><a class="tag-link" alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
+								<?=capitalize($tag)?> Startup Ideas
+							</a>&nbsp;<?
+						}
+						?>
+					?>
+				</div>
 
 
 				<br/>
