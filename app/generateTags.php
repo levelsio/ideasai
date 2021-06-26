@@ -22,9 +22,14 @@
 
 	$allWords=array_reverse($allWords);
 
-	array_slice($allWords,0,250);
-	
-	print_r($allWords);
+	$tags=array();
+
+	foreach($allWords as $word => $ideasCount) {
+		if($ideasCount<50) continue;
+		array_push($tags,$tag);
+	}
+
+	echo json_encode($tags);
 
 
 
