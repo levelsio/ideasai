@@ -198,7 +198,7 @@
 					overflow-x: hidden;
 				}
 				body {
-					padding:14px;
+					padding: 0px;
 					background:#f9f9f9;
 					text-align:center;
 				}
