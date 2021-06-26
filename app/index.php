@@ -998,9 +998,9 @@
 
 			<?if($tagPage) {?>
 
-				<h2>
-					🤔&nbsp; Latest ideas related to <?=capitalize($_GET['tag'])?>
-				</h2>
+				<h1>
+					<?=$pageTitle?>
+				</h1>
 				<?generateIdeaTable($topIdeas,false);?>
 				<br/>
 				<br/>
