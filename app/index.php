@@ -1928,7 +1928,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 
 				?><div id="id_<?=$idea['id']?>" class="tr container"><?
 					?><div class="td td_idea">
-						<h3 class="idea"><?
+						<h3 class="idea" style="margin:0;font-size:18px"><?
 							$text=$idea['idea'];
 							$i=1;
 							echo fixIdeaText($idea['idea']);
