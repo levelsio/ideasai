@@ -1007,6 +1007,14 @@
 				<hr>
 
 				<style>
+					footer {
+						background: #fff;
+						border-top: 1px solid #ddd;
+						padding-top: 100px;
+						margin: 0;
+						padding: 28px;
+						padding-bottom: 56px;
+					}
 					.tag-container {
 						max-width: 1100px;
 	    				width: 100%;
@@ -1021,18 +1029,20 @@
 						text-overflow: ellipsis;
 					}
 				</style>
-				<div class="tag-container">
-					<?
-						$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
+				<footer>
+					<div class="tag-container">
+						<?
+							$tags=json_decode(file_get_contents(__DIR__.'/tags.json'),true);
 
-						foreach($tags as $tag) {
-							?><a class="tag-link" alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
-								<?=capitalize($tag)?> Startup Ideas
-							</a>&nbsp;<?
-						}
+							foreach($tags as $tag) {
+								?><a class="tag-link" alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
+									<?=capitalize($tag)?> Startup Ideas
+								</a>&nbsp;<?
+							}
+							?>
 						?>
-					?>
-				</div>
+					</div>
+				</footer>
 
 
 				<br/>
