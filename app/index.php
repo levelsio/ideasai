@@ -1036,7 +1036,7 @@
 							foreach($tags as $tag) {
 								?><a class="tag-link" alt="<?=capitalize($tag)?> Startup Ideas" title="<?=capitalize($tag)?> Startup Ideas" href="/<?=$tag?>-startup-ideas">
 									<?=capitalize($tag)?> Startup Ideas
-								</a>&nbsp;<?
+								</a><?
 							}
 							?>
 						?>
