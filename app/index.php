@@ -2266,8 +2266,10 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 	
 	function sendToAdminTelegram($message) {
 		global $config;
+		$telegram_bot_token=$config['telegramAdminChat']['bot_token'];
+		$telegram_chat_id=$config['telegramAdminChat']['chat_id'];
 		if(stripos($message,'❌')!==false) file_put_contents('/srv/lastAdminTelegramTimestamp.txt',time()."\n".$message);
-		file_get_contents('https://api.telegram.org/bot'.$config['telegramAdminChat']['bot_token'].'/sendMessage?chat_id='.$config['telegramAdminChat']['chat_id'].'&text='.urlencode($message).'&disable_web_page_preview=true');
+		shell_exec('curl '.escapeshellarg('https://api.telegram.org/bot'.$telegram_bot_token.'/sendMessage?chat_id='.$telegram_chat_id.'&text='.urlencode($message).'&parse_mode=markdown&disable_web_page_preview=true').' &');
 	}
 
 	function capitalize($title) {
