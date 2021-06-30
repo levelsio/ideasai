@@ -244,7 +244,7 @@
 					padding:21px;
 				}
 				h2 {
-					max-width:400px;
+					max-width:600px;
 					width:100%;
 					text-align:center;
 					display:block;
