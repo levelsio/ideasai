@@ -875,11 +875,6 @@
 				</h1>
 			<?}?>
 			
-			<br/>
-
-			<br/>
-
-
 
 			<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
 				<strong>
@@ -888,6 +883,11 @@
 			</div>
 
 			
+			<br/>
+
+			<br/>
+
+
 
 			<?if($tagPage) {?>
 
@@ -1046,6 +1046,10 @@
 
 				<a name="readme"></a>
 
+				<h2>
+					⁉️ How it works
+				</h2>
+				
 				<p clas="text" style="text-align:left;line-height:1.8;">
 					The idea (no pun intended) is to give you inspiration to make something cool, if you lack inspiration right now. Many ideas here might not be perfect but they might give you the spark to start thinking to get to a really good idea further on.
 				</p>
