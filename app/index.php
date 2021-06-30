@@ -154,6 +154,12 @@
 					--box-shadow-central:0 0 0 1px var(--input-border-color), 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
 				}
 
+				html,body {
+					width: 100% !important;
+					max-width: 100% !important;
+					overflow-x: hidden !important;
+				}
+				
 				body,
 				input,
 				textarea {
@@ -193,11 +199,6 @@
 					appearance:none;
 					padding:14px;
 					border-radius:5px;
-				}
-				html,body {
-					width: 100vw;
-					max-width: 100vw;
-					overflow-x: hidden;
 				}
 				body {
 					padding: 0px;
