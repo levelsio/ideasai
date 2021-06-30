@@ -1042,6 +1042,8 @@
 				<?generateIdeaTable($latestIdeas);?>
 				<br/>
 				<br/>
+				<br/>
+				<br/>
 
 
 				<a name="readme"></a>
