@@ -119,9 +119,16 @@
 			// $query->execute();
 			// $voteCount=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(*)'];
 
-			$query=$gpt3votesDb->prepare("SELECT COUNT(DISTINCT(user_id)) FROM gpt3votes");
-			$query->execute();
-			$uniqueVoteCount=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(DISTINCT(user_id))'];
+			if(filemtime(__DIR__.'/uniqueVoteCount.txt')<strtotime("-24 hours")) {
+				$query=$gpt3votesDb->prepare("SELECT COUNT(DISTINCT(user_id)) FROM gpt3votes");
+				$query->execute();
+				$uniqueVoteCount=$query->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(DISTINCT(user_id))'];
+
+				file_put_contents(__DIR__.'/uniqueVoteCount.txt',$uniqueVoteCount);
+			}
+			else {
+				$uniqueVoteCount=file_get_contents(__DIR__.'/uniqueVoteCount.txt');
+			}
 
 
 
