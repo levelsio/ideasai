@@ -845,7 +845,16 @@
 					</p>
 				</div>
 
+				
+
 			<?}?>
+				
+
+			<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
+				<strong>
+					Sponsor: <a href="https://remtoeok.io/?ref=ideasai">Hiring remotely? Post a job to 1,000,000+ remote workers</a>
+				</strong>
+			</div>
 
 
 			<?if(!$_COOKIE['ideasai_subscribed']){?>
