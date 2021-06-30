@@ -852,6 +852,10 @@
 			<p style="margin-bottom:28px;">
 				by <a href="https://twitter.com/levelsio">@levelsio</a>
 			</p>
+
+			<br/>
+			<br/>
+			<br/>
 			
 			<?if($frontpage){?>
 
