@@ -9,7 +9,7 @@
 	require_once(__DIR__.'/../lib/sendgrid-php/vendor/autoload.php');
 	$sendgrid = new \SendGrid($config['sendGridApi']['key']);
 
-	$emailSponsorHTML="<strong>Sponsor: <a href=\"https://remoteok.io/hire-remotely?ref=ideasai\">You don't need to go back to the office! Find a remote job on Remote OK and work from anywhere</a></strong><br/><br/>\n\n";
+	$emailSponsorHTML="<strong>Sponsor: <a href=\"https://remoteok.io/?ref=ideasai\">You don't need to go back to the office! Find a remote job on Remote OK and work from anywhere</a></strong><br/><br/>\n\n";
 
 	require_once(__DIR__.'/../app/nsfw.php');
 	$bannedIdeas=$config['nsfw'];
