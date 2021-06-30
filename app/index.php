@@ -881,7 +881,7 @@
 
 			<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
 				<strong>
-					Sponsor: <a href="https://remtoeok.io/?ref=ideasai">You don't need to go back to the office! Find a remote job on Remote OK and work from anywhere</a>
+					Sponsor: <a href="https://remoteok.io/?ref=ideasai">You don't need to go back to the office! Find a remote job on Remote OK and work from anywhere</a>
 				</strong>
 			</div>
 
