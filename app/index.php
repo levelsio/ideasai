@@ -869,21 +869,15 @@
 			<?}?>
 
 
+			<?if($tagPage) {?>
+				<h1>
+					<?=$pageTitle?>
+				</h1>
+			<?}?>
 			
 			<br/>
 
 			<br/>
-
-			<?if($tagPage) {?>
-
-				<h1>
-					<?=$pageTitle?>
-				</h1>
-				<?generateIdeaTable($topIdeas,false);?>
-				<br/>
-				<br/>
-
-			<?}?>
 
 
 
@@ -892,6 +886,18 @@
 					Sponsor: <a href="https://remtoeok.io/?ref=ideasai">You don't need to go back to the office! Find a remote job on Remote OK and work from anywhere</a>
 				</strong>
 			</div>
+
+			
+
+			<?if($tagPage) {?>
+
+				<?generateIdeaTable($topIdeas,false);?>
+				<br/>
+				<br/>
+
+			<?}?>
+
+
 
 
 			<?if(!$_COOKIE['ideasai_subscribed']){?>
