@@ -1969,7 +1969,7 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 									"@id": "<?=md5($idea['idea'])?>",
 									"name": <?=json_encode($idea['idea'])?>
 								}
-							},
+							}<?if($i!=(count($ideas)-1)){?>,<?}?>
 							<?
 							$i++;
 						}?>
