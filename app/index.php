@@ -855,7 +855,6 @@
 
 			<br/>
 			<br/>
-			<br/>
 			
 			<?if($frontpage){?>
 
