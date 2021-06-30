@@ -1049,7 +1049,7 @@
 				<a name="readme"></a>
 
 				<h2>
-					⁉️ How it works
+					💡 How it works
 				</h2>
 				
 				<p clas="text" style="text-align:left;line-height:1.8;">
