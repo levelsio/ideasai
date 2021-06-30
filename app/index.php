@@ -1997,7 +1997,6 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 								"position": <?=$i?>,
 								"item":
 								{
-									"@type": "Idea",
 									"@id": "<?=md5($idea['idea'])?>",
 									"name": <?=json_encode($idea['idea'])?>
 								}
