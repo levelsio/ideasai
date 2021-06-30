@@ -880,6 +880,17 @@
 
 			<br/>
 
+			<?if($tagPage) {?>
+
+				<h1>
+					<?=$pageTitle?>
+				</h1>
+				<?generateIdeaTable($topIdeas,false);?>
+				<br/>
+				<br/>
+
+			<?}?>
+
 
 
 			<div clas="text" style="text-align:center;line-height:1.8;padding:14px;border:1px solid #000;border-radius:5px;display:table;margin:0 auto">
@@ -1078,17 +1089,6 @@
 				<br/>
 
 
-
-			<?}?>
-
-			<?if($tagPage) {?>
-
-				<h1>
-					<?=$pageTitle?>
-				</h1>
-				<?generateIdeaTable($topIdeas,false);?>
-				<br/>
-				<br/>
 
 			<?}?>
 
