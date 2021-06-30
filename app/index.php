@@ -201,7 +201,8 @@
 					border-radius:5px;
 				}
 				body {
-					padding: 0px;
+					margin: 0;
+					padding: 0;
 					background:#f9f9f9;
 					text-align:center;
 				}
