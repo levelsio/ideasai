@@ -1949,6 +1949,34 @@ If you don't want to get these weekly ideas anymore, <a href=\"https://ideasai.n
 			}
 		// </remove ideas w/ banned words>
 
+
+		// <schema>
+			?><script type="application/ld+json">
+				{
+					"@context": "https://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement":
+					[
+						<?
+						$i=0;
+						foreach($ideas as $idea) {?>
+							{
+								"@type": "ListItem",
+								"position": <?=$i?>,
+								"item":
+								{
+									"@id": "<?=md5($idea['idea'])?>",
+									"name": "<?=$idea['idea']?>"
+								}
+							}
+							<?
+							$i++;
+						}?>
+					]
+				}
+			</script><?
+		// </schema>
+
 		foreach($ideas as $idea) {
 			?><div class="table" style="<?if($soloIdea){?>transform:rotate(0deg);<?}?>margin:14px auto;"><?
 
